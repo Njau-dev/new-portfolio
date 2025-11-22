@@ -1,21 +1,10 @@
 "use client";
 
+import { IconItem, SocialIconsProps } from "@/types";
 import { Github, Twitter, Linkedin, Slack } from "lucide-react";
 
-interface IconItem {
-    href: string;
-    label: string;
-    Icon: any;
-}
-
-interface SocialIconsProps {
-    size?: number;
-    className?: string;
-    items?: IconItem[];
-}
-
 const defaultItems: IconItem[] = [
-    { href: "https://github.com/your-username", label: "GitHub", Icon: Github },
+    { href: "https://github.com/Njau-dev", label: "GitHub", Icon: Github },
     { href: "https://twitter.com/your-username", label: "Twitter", Icon: Twitter },
     { href: "https://linkedin.com/in/your-username", label: "LinkedIn", Icon: Linkedin },
     { href: "https://slack.com/", label: "Slack", Icon: Slack },

@@ -12,8 +12,8 @@ export default function Hero() {
                     {/* Text Content */}
                     <div className="space-y-4 md:space-y-6 order-1">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight">
-                            <span className="block">Jeff is a  <span className="text-primary">web designer</span> <span>and</span></span>
-                            <span className="text-primary">back-end developer</span>
+                            <span className="">Jeff is a <span className="text-primary">web designer</span> and </span>
+                            <span className="text-primary block">back-end developer</span>
                         </h1>
 
                         <p className="text-lg md:text-xl text-gray leading-relaxed max-w-2xl">
@@ -52,7 +52,9 @@ export default function Hero() {
                 </div>
 
                 {/* Bottom Section */}
-                <QuoteSection />
+                <div className="flex items-center mt-8 md:mt-12 lg:mt-16">
+                    <QuoteSection />
+                </div>
             </div>
         </section>
     );

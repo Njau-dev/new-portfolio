@@ -22,7 +22,7 @@ export default function Button({
     ...props
 }: ButtonProps) {
     const baseStyles =
-        "px-4 py-2 font-medium transition-colors text-sm sm:text-base";
+        "px-4 py-2 font-medium transition-colors text-xs sm:text-sm md:text-base";
 
     const variants = {
         primary: "bg-background border border-primary text-white hover:bg-primary/20",
@@ -32,18 +32,16 @@ export default function Button({
 
     const classes = cn(baseStyles, variants[variant], className);
 
-    // If href provided, render a Next.js Link for client-side navigation.
     if (href) {
         // Cast remaining props to anchor props to avoid invalid attributes on Link.
         const anchorProps = props as React.AnchorHTMLAttributes<HTMLAnchorElement>;
         return (
             <Link href={href} replace={replace} className={classes} onClick={onClick} {...anchorProps}>
-                {children}
+                {children} {variant === "secondary" ? '|>' : '<~>'}
             </Link>
         );
     }
 
-    // Otherwise render a normal button
     return (
         <button className={classes} onClick={onClick} type={type} {...props}>
             {children}

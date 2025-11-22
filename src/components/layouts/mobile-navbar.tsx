@@ -5,12 +5,7 @@ import HeaderLink from "../ui/header-link";
 import Link from "next/link";
 import { XIcon } from "lucide-react";
 import SocialIcons from "../ui/social-icons";
-
-interface MobileNavbarProps {
-    navItems: Array<{ label: string; href: string }>;
-    activeSection: string;
-    onItemClick: (label: string) => void;
-}
+import { MobileNavbarProps } from "@/types";
 
 export default function MobileNavbar({
     navItems,

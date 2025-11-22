@@ -1,15 +1,8 @@
 "use client";
 
+import { HeaderLinkProps } from "@/types";
 import Link from "next/link";
 import { useState } from "react";
-
-interface HeaderLinkProps {
-    label: string;
-    href: string;
-    active?: boolean;
-    onClick?: () => void;
-    className?: string;
-}
 
 export default function HeaderLink({
     label,
@@ -21,7 +14,7 @@ export default function HeaderLink({
     const [hovered, setHovered] = useState(false);
 
     const baseColor = active
-        ? "text-white"
+        ? "text-white font-semibold"
         : hovered
             ? "text-white"
             : "text-gray";

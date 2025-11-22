@@ -1,11 +1,8 @@
 "use client";
+import { InputProps } from "@/types";
 import { useState } from "react";
 
-interface Props {
-    label: string;
-}
-
-export default function Input({ label }: Props) {
+export default function Input({ label }: InputProps) {
     const [focused, setFocused] = useState(false);
     const [value, setValue] = useState("");
 
