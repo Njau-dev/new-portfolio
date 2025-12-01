@@ -1,4 +1,3 @@
-import React from 'react';
 import SectionHeader from '../ui/section-header';
 import ProjectCard from '../ui/project-card';
 import { projects } from '@/data/project';

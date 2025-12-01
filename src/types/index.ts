@@ -49,3 +49,14 @@ export interface SocialIconsProps {
     className?: string;
     items?: IconItem[];
 }
+
+export interface Skill {
+    id: number;
+    category: string;
+    skills: string[];
+}
+
+export interface SkillCardProps {
+    skill: Skill;
+}
+
