@@ -6,8 +6,8 @@ import QuoteSection from "../ui/quote-section";
 
 export default function Hero() {
     return (
-        <section className="min-h-screen lg:min-h-[70vh] flex items-start lg:items-center py-6 md:py-16 px-6 bg-background">
-            <div className="max-w-7xl mx-auto w-full">
+        <section className="min-h-screen lg:min-h-[70vh] flex items-start lg:items-center py-6 md:py-16 px-6 max-w-7xl mx-auto w-full bg-background">
+            <div className="">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}
                     <div className="space-y-4 md:space-y-6 order-1">

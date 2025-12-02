@@ -60,3 +60,16 @@ export interface SkillCardProps {
     skill: Skill;
 }
 
+export interface WorkExperience {
+    id: number;
+    company: string;
+    position: string;
+    period: string;
+    location: string;
+    description: string[];
+    technologies: string[];
+}
+
+export interface WorkCardProps {
+    work: WorkExperience;
+}

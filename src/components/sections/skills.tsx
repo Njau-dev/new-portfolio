@@ -9,8 +9,8 @@ const SkillsSection = () => {
     const thirdColumn = skills.slice(3, 6); // Three rows (or however many are left)
 
     return (
-        <section className="w-full max-w-7xl mx-auto px-6 py-16 md:py-24">
-            <SectionHeader title="#skills" />
+        <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
+            <SectionHeader title="skills" />
 
             <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-40">
                 {/* Left side with pattern image - Hidden on small/medium screens */}
