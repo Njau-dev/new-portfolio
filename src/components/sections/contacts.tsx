@@ -2,11 +2,12 @@ import SectionHeader from '../ui/section-header';
 import Button from '../ui/button';
 import { Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { SectionProps } from '@/types';
 
-const ContactSection = () => {
+const ContactSection = ({ header }: SectionProps) => {
     return (
         <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-            <SectionHeader title="contacts" />
+            {header ? <SectionHeader title="contacts" /> : null}
 
             <div className="mt-8 w-full">
                 <div className="flex flex-col lg:flex-row justify-between">

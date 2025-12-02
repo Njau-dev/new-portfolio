@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import SectionHeader from '../ui/section-header';
 import Button from '../ui/button';
+import { SectionProps } from '@/types';
 
-const AboutSection = () => {
+const AboutSection = ({ header }: SectionProps) => {
     return (
         <section className="w-full max-w-7xl mx-auto px-6 py-12 md:pt-20">
-            <SectionHeader title="about" />
+            {header ? <SectionHeader title="about" /> : null}
 
             <div className="lg:w-auto flex flex-col lg:flex-row items-start gap-8 md:gap-12 lg:gap-40 mt-8">
                 {/* Left side - Content */}

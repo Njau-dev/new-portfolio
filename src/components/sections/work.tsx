@@ -2,18 +2,19 @@ import Image from 'next/image';
 import SectionHeader from '../ui/section-header';
 import WorkCard from '../ui/work-card';
 import { workExperiences } from '@/data/work';
+import { SectionProps } from '@/types';
 
-const WorkSection = () => {
+const WorkSection = ({ header }: SectionProps) => {
     return (
         <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-            <SectionHeader title="work" />
+            {header ? <SectionHeader title="work" /> : null}
 
             <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-40 mt-8">
                 {/* Left side - Work cards */}
                 <div className="w-full lg:w-3/5">
                     <div className="space-y-6">
                         {workExperiences.map((work) => (
-                            <WorkCard key={work.id} work={work} />
+                            <WorkCard key={work.id} work={work} showLink />
                         ))}
                     </div>
                 </div>

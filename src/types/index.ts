@@ -3,13 +3,13 @@ export interface Project {
     title: string;
     description: string;
     imageUrl: string;
-    techStack: string[]; // e.g., ["HTML", "SCSS", "Python"]
+    techStack: string[];
     links: {
         demo?: string;
-        cached?: string; // Specific to the "Cached >" button seen in the first card
-        github?: string; // Assuming the empty purple box is a GitHub/Source link
+        cached?: string;
+        github?: string;
     };
-    accentColor?: string; // Optional: to handle specific background gradients if needed
+    accentColor?: string;
 }
 
 export interface ProjectCardProps {
@@ -36,6 +36,7 @@ export interface InputProps {
 
 export interface SectionHeaderProps {
     title: string;
+    className?: string;
 }
 
 export interface IconItem {
@@ -60,16 +61,77 @@ export interface SkillCardProps {
     skill: Skill;
 }
 
+
+export interface SectionProps {
+    header: boolean;
+}
+
 export interface WorkExperience {
-    id: number;
+    id: string;
     company: string;
     position: string;
     period: string;
     location: string;
+    type: 'employment';
     description: string[];
     technologies: string[];
+    // Detailed page data
+    overview: string;
+    responsibilities: string[];
+    achievements: string[];
+    metrics?: {
+        label: string;
+        value: string;
+        description: string;
+    }[];
+    images?: string[];
+    teamSize?: string;
+    duration?: string;
+    website?: string;
+}
+
+export interface ClientProject {
+    id: string;
+    clientName: string;
+    projectName: string;
+    period: string;
+    type: 'client';
+    category: string; // e.g., "E-commerce", "Portfolio", "SaaS"
+    description: string;
+    technologies: string[];
+    // Detailed page data
+    overview: string;
+    challenge: string;
+    solution: string;
+    features: string[];
+    metrics?: {
+        label: string;
+        value: string;
+        description: string;
+    }[];
+    images?: string[];
+    testimonial?: {
+        text: string;
+        author: string;
+        role: string;
+    };
+    liveUrl?: string;
+    caseStudyUrl?: string;
 }
 
 export interface WorkCardProps {
     work: WorkExperience;
+    showLink?: boolean;
 }
+
+
+export interface ClientProjectCardProps {
+    project: ClientProject;
+}
+
+export interface WorkDetailPageProps {
+    params: {
+        id: string;
+    };
+}
+
