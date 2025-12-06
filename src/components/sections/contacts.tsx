@@ -7,7 +7,7 @@ import { SectionProps } from '@/types';
 const ContactSection = ({ header }: SectionProps) => {
     return (
         <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-            {header ? <SectionHeader title="contacts" /> : null}
+            {header ? <SectionHeader title="contacts" hero={true} /> : null}
 
             <div className="mt-8 w-full">
                 <div className="flex flex-col lg:flex-row justify-between">

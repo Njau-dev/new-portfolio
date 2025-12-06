@@ -4,35 +4,18 @@ import WorkCard from '@/components/ui/work-card';
 import ClientProjectCard from '@/components/ui/client-project-card';
 import { workExperiences, clientProjects } from '@/data/work';
 import WorkSection from '@/components/sections/work';
+import PageHeader from '@/components/ui/page-header';
 
 const WorkPage = () => {
     return (
         <main className="min-h-screen">
-            {/* Hero Section */}
-            <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-                <div className="relative">
-                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
-                        My <span className="text-accent">Work</span> Experience
-                    </h1>
-                    <p className="text-gray text-lg md:text-xl max-w-2xl leading-relaxed">
-                        A comprehensive overview of my professional journey, client projects,
-                        and the impact I've made in the web development space.
-                    </p>
-
-                    {/* Decorative pattern */}
-                    <div className="hidden lg:block absolute -right-20 top-0 w-40 h-40 opacity-30">
-                        <Image
-                            src="/dots-rectangle.svg"
-                            alt="decorative pattern"
-                            fill
-                            className="object-contain"
-                        />
-                    </div>
-                </div>
-            </section>
+            <PageHeader
+                title="Work Experience"
+                description="An overview of my professional journey, client projects, and the impact I've made in the web development space."
+            />
 
             {/* Professional Experience Section */}
-            <section className="w-full max-w-7xl">
+            <section className="w-full max-w-7xl mx-auto py-12 md:py-20">
                 <SectionHeader title="professional-experience" className="mx-auto px-6" />
 
                 <WorkSection header={false} />
@@ -40,7 +23,7 @@ const WorkPage = () => {
 
             {/* Client Projects Section */}
             <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-                <SectionHeader title="#client-projects" />
+                <SectionHeader title="client-projects" />
 
                 <div className="mt-8">
                     <p className="text-gray mb-8 max-w-3xl leading-relaxed">
@@ -69,66 +52,11 @@ const WorkPage = () => {
                 </div>
             </section>
 
-            {/* Skills Highlight Section */}
-            <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-                <SectionHeader title="#core-competencies" />
-
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {/* Technical Excellence */}
-                    <div className="border border-gray/70 bg-background p-6">
-                        <div className="mb-4">
-                            <div className="w-12 h-12 border border-accent flex items-center justify-center mb-4">
-                                <span className="text-accent text-2xl">⚡</span>
-                            </div>
-                            <h3 className="text-white text-xl font-semibold mb-3">
-                                Technical Excellence
-                            </h3>
-                        </div>
-                        <p className="text-gray text-sm leading-relaxed">
-                            Proficient in modern web technologies with a focus on performance,
-                            scalability, and best practices. Continuously learning and adapting
-                            to new tools and frameworks.
-                        </p>
-                    </div>
-
-                    {/* Client Success */}
-                    <div className="border border-gray/70 bg-background p-6">
-                        <div className="mb-4">
-                            <div className="w-12 h-12 border border-accent flex items-center justify-center mb-4">
-                                <span className="text-accent text-2xl">🎯</span>
-                            </div>
-                            <h3 className="text-white text-xl font-semibold mb-3">
-                                Client Success
-                            </h3>
-                        </div>
-                        <p className="text-gray text-sm leading-relaxed">
-                            Committed to understanding client needs and delivering solutions
-                            that exceed expectations. Track record of 96% client satisfaction
-                            and long-term partnerships.
-                        </p>
-                    </div>
-
-                    {/* Problem Solving */}
-                    <div className="border border-gray/70 bg-background p-6">
-                        <div className="mb-4">
-                            <div className="w-12 h-12 border border-accent flex items-center justify-center mb-4">
-                                <span className="text-accent text-2xl">🔧</span>
-                            </div>
-                            <h3 className="text-white text-xl font-semibold mb-3">
-                                Problem Solving
-                            </h3>
-                        </div>
-                        <p className="text-gray text-sm leading-relaxed">
-                            Analytical approach to challenges with creative solutions.
-                            Experience in debugging complex issues and optimizing application
-                            performance across various projects.
-                        </p>
-                    </div>
-                </div>
-            </section>
 
             {/* Statistics Section */}
             <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
+                <SectionHeader title="impact" hero={false} />
+
                 <div className="border border-gray/70 bg-background p-8 md:p-12 relative overflow-hidden">
                     <div className="relative z-10">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
@@ -169,7 +97,7 @@ const WorkPage = () => {
 
             {/* Testimonials Section */}
             <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-                <SectionHeader title="#testimonials" />
+                <SectionHeader title="testimonials" />
 
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                     {clientProjects

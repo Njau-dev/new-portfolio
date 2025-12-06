@@ -1,13 +1,13 @@
 import { SectionHeaderProps } from '@/types';
 import React from 'react';
 
-const SectionHeader: React.FC<SectionHeaderProps> = ({ title, className }) => {
+const SectionHeader: React.FC<SectionHeaderProps> = ({ title, className, hero }) => {
     return (
-        <div className={`flex items-center gap-4 mb-12 w-full ${className}`}>
-            <h2 className="text-3xl md:text-4xl font-medium text-primary">
-                <span className='text-white font-bold'>#</span>{title}
+        <div className={` flex items-center gap-4 mb-12 w-full ${className}`}>
+            <h2 className="text-2xl md:text-3xl font-medium text-white w-fit shrink-0 lowercase">
+                <span className='text-primary font-bold'># </span>{title}
             </h2>
-            <div className="h-px bg-primary grow w-full" />
+            {hero ? <div className="h-px bg-primary grow w-full" /> : null}
         </div>
     );
 };

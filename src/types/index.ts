@@ -37,7 +37,14 @@ export interface InputProps {
 export interface SectionHeaderProps {
     title: string;
     className?: string;
+    hero?: boolean;
 }
+
+export interface PageHeaderProps {
+    title?: string;
+    description?: string;
+}
+
 
 export interface IconItem {
     href: string;
@@ -130,8 +137,7 @@ export interface ClientProjectCardProps {
 }
 
 export interface WorkDetailPageProps {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 }
-

@@ -10,7 +10,7 @@ const SkillsSection = () => {
 
     return (
         <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-            <SectionHeader title="skills" />
+            <SectionHeader title="skills" hero={true} />
 
             <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-40">
                 {/* Left side with pattern image - Hidden on small/medium screens */}

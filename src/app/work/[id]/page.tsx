@@ -4,30 +4,21 @@ import { notFound } from 'next/navigation';
 import Button from '@/components/ui/button';
 import { ArrowLeft, ExternalLink, Calendar, MapPin, Users } from 'lucide-react';
 import { clientProjects, workExperiences } from '@/data/work';
-import type { WorkExperience, ClientProject } from '@/types';
-
-interface WorkDetailPageProps {
-    params: Promise<{
-        id: string;
-    }>;
-}
+import type { WorkExperience, ClientProject, WorkDetailPageProps } from '@/types';
 
 // Generate static params for all work experiences and client projects
 export async function generateStaticParams() {
     const workIds = workExperiences.map((work) => ({ id: String(work.id) }));
     const projectIds = clientProjects.map((project) => ({ id: String(project.id) }));
 
-    console.log('generateStaticParams -> workIds:', workIds, 'projectIds:', projectIds);
     return [...workIds, ...projectIds];
 }
 
 const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
     const { id } = await params;
-    console.log('WorkDetailPage params.id ->', id);
     const workExperience = workExperiences.find((work) => String(work.id) === String(id));
     const clientProject = clientProjects.find((project) => String(project.id) === String(id));
     const experience = workExperience || clientProject;
-    console.log('resolved experience ->', !!experience, experience?.id);
     if (!experience) {
         notFound();
     }

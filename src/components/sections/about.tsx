@@ -6,7 +6,7 @@ import { SectionProps } from '@/types';
 const AboutSection = ({ header }: SectionProps) => {
     return (
         <section className="w-full max-w-7xl mx-auto px-6 py-12 md:pt-20">
-            {header ? <SectionHeader title="about" /> : null}
+            {header ? <SectionHeader title="about" hero={true} /> : null}
 
             <div className="lg:w-auto flex flex-col lg:flex-row items-start gap-8 md:gap-12 lg:gap-40 mt-8">
                 {/* Left side - Content */}
