@@ -36,7 +36,7 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
             {/* Back Button */}
             <div className="w-full max-w-7xl mx-auto px-6 pt-8">
                 <Link href="/work">
-                    <button className="flex items-center gap-2 text-gray hover:text-accent transition-colors">
+                    <button className="flex items-center gap-2 text-gray hover:text-primary/70 transition-colors border border-gray/50 px-4 py-2 cursor-pointer ">
                         <ArrowLeft size={20} />
                         <span>Back to Work</span>
                     </button>

@@ -54,7 +54,7 @@ const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
     if (showLink) {
         return (
             <Link href={`/work/${work.id}`}>
-                <div className="border border-gray/70 bg-background p-6 hover:border-accent transition-all duration-300 group cursor-pointer">
+                <div className="border border-gray/70 bg-background p-6 hover:border-accent transition-all duration-300 my-4 group cursor-pointer">
                     <CardContent />
                 </div>
             </Link>
@@ -62,7 +62,7 @@ const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
     }
 
     return (
-        <div className="border border-gray/70 bg-background p-6 hover:border-accent transition-colors duration-300">
+        <div className="border border-gray/70 bg-background p-6 hover:border-accent transition-colors duration-300 my-4 ">
             <CardContent />
         </div>
     );
