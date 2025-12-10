@@ -38,16 +38,6 @@ const WorkPage = () => {
                                 <ClientProjectCard key={project.id} project={project} />
                             ))}
                         </div>
-
-                        {/* Decorative pattern */}
-                        <div className="hidden lg:block absolute -left-32 top-20 w-32 h-32 opacity-20">
-                            <Image
-                                src="/logo-pattern.svg"
-                                alt="decorative logo pattern"
-                                fill
-                                className="object-contain"
-                            />
-                        </div>
                     </div>
                 </div>
             </section>

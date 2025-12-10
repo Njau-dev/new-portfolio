@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeaderLink from "../ui/header-link";
 import Link from "next/link";
 import { XIcon } from "lucide-react";
@@ -54,7 +54,7 @@ export default function MobileNavbar({
                     <div>
                         {/* Close button and header */}
                         <div className="flex justify-between items-center p-6">
-                            <Link href="/" className="flex gap-4 items-center">
+                            <Link href="/" onClick={() => handleItemClick("home")} className="flex gap-4 items-center">
                                 <img src="logo-pattern.svg" alt="logo" className="h-6 w-auto" />
                                 <span className="font-bold text-white">Njau</span>
                             </Link>

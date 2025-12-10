@@ -3,6 +3,8 @@ import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layouts/navbar";
 import Footer from "@/components/layouts/footer";
+import Background from "@/components/layouts/background";
+import SocialSidebar from "@/components/layouts/social-sidebar";
 
 
 const firaCode = Fira_Code({
@@ -25,9 +27,18 @@ export default function RootLayout({
       <body
         className={`${firaCode.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        {/* Background patterns - will show on all pages */}
+        <Background />
+
+        {/* Social sidebar */}
+        <SocialSidebar />
+
+        {/* Main content wrapper with relative positioning */}
+        <div className="relative z-0">
+          <Navbar />
+          <div className="relative top-20 ">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

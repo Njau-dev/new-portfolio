@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import HeaderLink from "../ui/header-link";
 import MobileNavbar from "./mobile-navbar";
@@ -25,17 +25,28 @@ export default function Navbar() {
         { label: "contacts", href: "/contacts" },
     ];
 
+    useEffect(() => {
+        // Check the current URL and set the active section accordingly
+        const currentPath = window.location.pathname;
+        const activeItem = navItems.find((item) => item.href === currentPath);
+        if (activeItem) {
+            setActiveSection(activeItem.label);
+        }
+    }, []);
+
     const handleItemClick = (label: string) => {
         setActiveSection(label);
     };
 
     return (
-        <nav className="w-full bg-background py-4 px-6 overflow-hidden">
+        <nav
+            className="fixed top-0 left-0 right-0 z-50 w-full bg-background backdrop-blur-md py-4 px-6 transition-transform duration-300"
+        >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 {/* Logo */}
-                <div className="shrink-0">
+                <button onClick={() => handleItemClick("home")} className="shrink-0">
                     <Logo />
-                </div>
+                </button>
 
                 {/* Desktop Navigation Links - Hidden on mobile */}
                 <div className="hidden md:flex space-x-8 items-center">
