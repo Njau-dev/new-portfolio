@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import SectionHeader from '@/components/ui/section-header';
-import WorkCard from '@/components/ui/work-card';
 import ClientProjectCard from '@/components/ui/client-project-card';
-import { workExperiences, clientProjects } from '@/data/work';
+import { clientProjects } from '@/data/work';
 import WorkSection from '@/components/sections/work';
 import PageHeader from '@/components/ui/page-header';
 
@@ -55,19 +54,19 @@ const WorkPage = () => {
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                             <div className="text-center">
-                                <p className="text-accent text-4xl md:text-5xl font-bold mb-2">3+</p>
+                                <p className="text-primary text-4xl md:text-5xl font-bold mb-2">3+</p>
                                 <p className="text-gray text-sm">Years Experience</p>
                             </div>
                             <div className="text-center">
-                                <p className="text-accent text-4xl md:text-5xl font-bold mb-2">25+</p>
+                                <p className="text-primary text-4xl md:text-5xl font-bold mb-2">25+</p>
                                 <p className="text-gray text-sm">Projects Completed</p>
                             </div>
                             <div className="text-center">
-                                <p className="text-accent text-4xl md:text-5xl font-bold mb-2">96%</p>
+                                <p className="text-primary text-4xl md:text-5xl font-bold mb-2">96%</p>
                                 <p className="text-gray text-sm">Client Satisfaction</p>
                             </div>
                             <div className="text-center">
-                                <p className="text-accent text-4xl md:text-5xl font-bold mb-2">15+</p>
+                                <p className="text-primary text-4xl md:text-5xl font-bold mb-2">15+</p>
                                 <p className="text-gray text-sm">Happy Clients</p>
                             </div>
                         </div>
@@ -98,14 +97,14 @@ const WorkPage = () => {
                                 className="border border-gray/70 bg-background p-6"
                             >
                                 <div className="mb-4">
-                                    <span className="text-accent text-4xl">"</span>
+                                    <span className="text-primary text-4xl">"</span>
                                 </div>
                                 <p className="text-gray italic mb-6 leading-relaxed">
                                     {project.testimonial?.text}
                                 </p>
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
-                                        <span className="text-accent font-bold">
+                                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center">
+                                        <span className="text-primary font-bold">
                                             {project.testimonial?.author.charAt(0)}
                                         </span>
                                     </div>

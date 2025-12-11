@@ -63,7 +63,7 @@ const AllMediaSection = () => {
                         {mediaItems.map((item) => (
                             <div
                                 key={item.name}
-                                className="border border-gray/70 bg-background p-4 hover:border-accent transition-colors duration-300"
+                                className="border border-gray/70 bg-background p-4 hover:border-primary transition-colors duration-300"
                             >
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-3">
@@ -74,7 +74,7 @@ const AllMediaSection = () => {
                                         href={item.href}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="text-gray hover:text-accent transition-colors text-sm"
+                                        className="text-gray hover:text-primary transition-colors text-sm"
                                     >
                                         connect
                                     </Link>

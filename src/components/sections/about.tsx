@@ -12,7 +12,7 @@ const AboutSection = ({ header }: SectionProps) => {
                 {/* Left side - Content */}
                 <div className="lg:w-1/2">
                     <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
-                        Hello, i'm <span className="text-accent">Jeff Njau</span>!
+                        Hello, i'm <span className="text-primary">Jeff Njau</span>!
                     </h1>
 
                     <div className="space-y-4 text-gray">

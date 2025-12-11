@@ -8,13 +8,13 @@ const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
             {/* Header */}
             <div className="mb-4">
                 <div className="flex justify-between items-start">
-                    <h3 className="text-white text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
+                    <h3 className="text-white text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                         {work.position}
                     </h3>
                     {showLink && (
                         <ArrowUpRight
                             size={20}
-                            className="text-gray group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
+                            className="text-gray group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
                         />
                     )}
                 </div>
@@ -30,7 +30,7 @@ const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
                 <ul className="space-y-2 text-gray text-sm">
                     {work.description.map((item, index) => (
                         <li key={index} className="flex items-start gap-2">
-                            <span className="text-accent mt-1">▹</span>
+                            <span className="text-primary mt-1">▹</span>
                             <span className="leading-relaxed">{item}</span>
                         </li>
                     ))}
@@ -54,7 +54,7 @@ const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
     if (showLink) {
         return (
             <Link href={`/work/${work.id}`}>
-                <div className="border border-gray/70 bg-background p-6 hover:border-accent transition-all duration-300 my-4 group cursor-pointer">
+                <div className="border border-gray/70 bg-background p-6 hover:border-primary transition-all duration-300 my-4 group cursor-pointer">
                     <CardContent />
                 </div>
             </Link>
@@ -62,7 +62,7 @@ const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
     }
 
     return (
-        <div className="border border-gray/70 bg-background p-6 hover:border-accent transition-colors duration-300 my-4 ">
+        <div className="border border-gray/70 bg-background p-6 hover:border-primary transition-colors duration-300 my-4 ">
             <CardContent />
         </div>
     );

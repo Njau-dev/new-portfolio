@@ -1,16 +1,4 @@
-export interface Project {
-    id: string;
-    title: string;
-    description: string;
-    imageUrl: string;
-    techStack: string[];
-    links: {
-        demo?: string;
-        cached?: string;
-        github?: string;
-    };
-    accentColor?: string;
-}
+import { Project } from "./project";
 
 export interface ProjectCardProps {
     project: Project;
@@ -137,6 +125,12 @@ export interface ClientProjectCardProps {
 }
 
 export interface WorkDetailPageProps {
+    params: Promise<{
+        id: string;
+    }>;
+}
+
+export interface ProjectDetailPageProps {
     params: Promise<{
         id: string;
     }>;

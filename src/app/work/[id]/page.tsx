@@ -49,7 +49,7 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
                     {isClientProject(experience) ? (
                         <>
                             <div className="flex items-center gap-2 mb-4">
-                                <span className="text-accent text-xs border border-accent px-2 py-1">
+                                <span className="text-primary text-xs border border-primary px-2 py-1">
                                     {experience.category}
                                 </span>
                             </div>
@@ -172,7 +172,7 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-40">
                     <div className="lg:w-2/3">
                         <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
-                            <span className="text-accent">#</span>
+                            <span className="text-primary">#</span>
                             Overview
                         </h2>
                         <p className="text-gray leading-relaxed text-lg mb-8">
@@ -183,7 +183,7 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
                         {isClientProject(experience) && (
                             <>
                                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                    <span className="text-accent">#</span>
+                                    <span className="text-primary">#</span>
                                     The Challenge
                                 </h3>
                                 <p className="text-gray leading-relaxed mb-8">
@@ -191,7 +191,7 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
                                 </p>
 
                                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                    <span className="text-accent">#</span>
+                                    <span className="text-primary">#</span>
                                     The Solution
                                 </h3>
                                 <p className="text-gray leading-relaxed mb-8">
@@ -199,13 +199,13 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
                                 </p>
 
                                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                    <span className="text-accent">#</span>
+                                    <span className="text-primary">#</span>
                                     Key Features
                                 </h3>
                                 <ul className="space-y-3 mb-8">
                                     {experience.features.map((feature, index) => (
                                         <li key={index} className="flex items-start gap-3 text-gray">
-                                            <span className="text-accent mt-1">▹</span>
+                                            <span className="text-primary mt-1">▹</span>
                                             <span className="leading-relaxed">{feature}</span>
                                         </li>
                                     ))}
@@ -217,26 +217,26 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
                         {isWorkExperience(experience) && (
                             <>
                                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                    <span className="text-accent">#</span>
+                                    <span className="text-primary">#</span>
                                     Key Responsibilities
                                 </h3>
                                 <ul className="space-y-3 mb-8">
                                     {experience.responsibilities.map((responsibility, index) => (
                                         <li key={index} className="flex items-start gap-3 text-gray">
-                                            <span className="text-accent mt-1">▹</span>
+                                            <span className="text-primary mt-1">▹</span>
                                             <span className="leading-relaxed">{responsibility}</span>
                                         </li>
                                     ))}
                                 </ul>
 
                                 <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                    <span className="text-accent">#</span>
+                                    <span className="text-primary">#</span>
                                     Key Achievements
                                 </h3>
                                 <ul className="space-y-3 mb-8">
                                     {experience.achievements.map((achievement, index) => (
                                         <li key={index} className="flex items-start gap-3 text-gray">
-                                            <span className="text-accent mt-1">▹</span>
+                                            <span className="text-primary mt-1">▹</span>
                                             <span className="leading-relaxed">{achievement}</span>
                                         </li>
                                     ))}
@@ -257,7 +257,7 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
                                     <div className="space-y-6">
                                         {experience.metrics.map((metric, index) => (
                                             <div key={index}>
-                                                <p className="text-accent text-3xl font-bold mb-1">
+                                                <p className="text-primary text-3xl font-bold mb-1">
                                                     {metric.value}
                                                 </p>
                                                 <p className="text-white font-medium mb-1">
@@ -289,16 +289,16 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
             {/* Testimonial */}
             {isClientProject(experience) && experience.testimonial && (
                 <section className="w-full max-w-7xl mx-auto px-6 py-12">
-                    <div className="border border-accent/50 bg-background p-8 md:p-12 relative">
+                    <div className="border border-primary/50 bg-background p-8 md:p-12 relative">
                         <div className="mb-6">
-                            <span className="text-accent text-6xl">"</span>
+                            <span className="text-primary text-6xl">"</span>
                         </div>
                         <p className="text-gray text-lg md:text-xl italic mb-8 leading-relaxed max-w-4xl">
                             {experience.testimonial.text}
                         </p>
                         <div className="flex items-center gap-4">
-                            <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center">
-                                <span className="text-accent font-bold text-xl">
+                            <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
+                                <span className="text-primary font-bold text-xl">
                                     {experience.testimonial.author.charAt(0)}
                                 </span>
                             </div>
