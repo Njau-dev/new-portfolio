@@ -20,7 +20,7 @@ const WorkSection = ({ header }: SectionProps) => {
                 </div>
 
                 <div className="hidden lg:block lg:w-2/5 relative">
-                    <div className="space-y-8 sticky top-8">
+                    <div className="space-y-8 sticky top-16">
                         {/* Top pattern */}
                         <div className="relative h-[180px] w-full opacity-70">
                             <Image

@@ -247,7 +247,7 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
 
                     {/* Sidebar with Metrics */}
                     <div className="lg:w-1/3">
-                        <div className="sticky top-8">
+                        <div className="sticky top-16">
                             {/* Metrics */}
                             {experience.metrics && experience.metrics.length > 0 && (
                                 <div className="border border-gray/70 bg-background p-6 mb-6">

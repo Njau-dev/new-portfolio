@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import HeaderLink from "../ui/header-link";
 import Link from "next/link";
 import { XIcon } from "lucide-react";
@@ -13,9 +14,10 @@ export default function MobileNavbar({
     onItemClick
 }: MobileNavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [portalEl, setPortalEl] = useState<HTMLElement | null>(null);
 
     const toggleMenu = () => {
-        setIsOpen(!isOpen);
+        setIsOpen((s) => !s);
     };
 
     const handleItemClick = (label: string) => {
@@ -23,12 +25,83 @@ export default function MobileNavbar({
         setIsOpen(false);
     };
 
+    // create a portal container once on mount
+    useEffect(() => {
+        const id = "mobile-menu-portal";
+        let el = document.getElementById(id);
+        if (!el) {
+            el = document.createElement("div");
+            el.id = id;
+            document.body.appendChild(el);
+        }
+        setPortalEl(el);
+
+        return () => {
+            // don't remove a portal created elsewhere; remove only if we appended it
+            // (safest to leave the element in place if other instances might use it)
+        };
+    }, []);
+
+    // disable body scroll when menu is open
+    useEffect(() => {
+        if (typeof document === "undefined") return;
+        const prev = document.body.style.overflow;
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = prev || "";
+        }
+        return () => {
+            document.body.style.overflow = prev || "";
+        };
+    }, [isOpen]);
+
+    // Overlay UI to be portaled
+    const Overlay = (
+        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-sm flex flex-col">
+            <div>
+                {/* Close button and header */}
+                <div className="flex justify-between items-center p-6">
+                    <Link href="/" onClick={() => handleItemClick("home")} className="flex gap-4 items-center">
+                        <img src="logo-pattern.svg" alt="logo" className="h-6 w-auto" />
+                        <span className="font-bold text-white">Njau</span>
+                    </Link>
+                    <button
+                        onClick={toggleMenu}
+                        className="p-2 rounded-md text-gray hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray z-50"
+                        aria-label="Close menu"
+                    >
+                        <XIcon />
+                    </button>
+                </div>
+                {/* Navigation Links */}
+                <div className="flex flex-col p-6 space-y-6">
+                    {navItems.map((item) => (
+                        <div key={item.label} className="pb-4">
+                            <HeaderLink
+                                label={item.label}
+                                href={item.href}
+                                active={activeSection === item.label}
+                                onClick={() => handleItemClick(item.label)}
+                                className="text-xl"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="flex flex-col items-center w-full mt-4">
+                <SocialIcons className="py-8" />
+            </div>
+        </div>
+    );
+
     return (
         <div className="md:hidden">
-            {/* Hamburger Button */}
+            {/* Hamburger Button (keep high z to stay above overlay) */}
             <button
                 onClick={toggleMenu}
-                className="p-2 rounded-md text-gray hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray"
+                className="p-2 rounded-md text-gray hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray relative z-50"
                 aria-label="Toggle menu"
                 aria-expanded={isOpen}
             >
@@ -48,45 +121,8 @@ export default function MobileNavbar({
                 </div>
             </button>
 
-            {/* Mobile Menu Overlay */}
-            {isOpen && (
-                <div className="fixed inset-0 z-50 bg-background flex flex-col">
-                    <div>
-                        {/* Close button and header */}
-                        <div className="flex justify-between items-center p-6">
-                            <Link href="/" onClick={() => handleItemClick("home")} className="flex gap-4 items-center">
-                                <img src="logo-pattern.svg" alt="logo" className="h-6 w-auto" />
-                                <span className="font-bold text-white">Njau</span>
-                            </Link>
-                            <button
-                                onClick={toggleMenu}
-                                className="p-2 rounded-md text-gray hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray"
-                                aria-label="Close menu"
-                            >
-                                <XIcon />
-                            </button>
-                        </div>
-                        {/* Navigation Links */}
-                        <div className="flex flex-col p-6 space-y-6">
-                            {navItems.map((item) => (
-                                <div key={item.label} className="pb-4">
-                                    <HeaderLink
-                                        label={item.label}
-                                        href={item.href}
-                                        active={activeSection === item.label}
-                                        onClick={() => handleItemClick(item.label)}
-                                        className="text-xl"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col items-center w-full mt-4">
-                        <SocialIcons className="py-8" />
-                    </div>
-                </div>
-            )}
+            {/* Portal overlay (renders at document.body level) */}
+            {portalEl && isOpen && createPortal(Overlay, portalEl)}
         </div>
     );
 }

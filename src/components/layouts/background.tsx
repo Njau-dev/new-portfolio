@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Background() {
     return (
-        <div className="hidden lg:block fixed inset-0 top-10 -z-10 overflow-hidden pointer-events-none">
+        <div className="hidden xl:block fixed inset-0 top-10 -z-10 overflow-hidden pointer-events-none">
             {/* Top left dots pattern */}
             <div className="absolute top-1/2 left-10 opacity-15">
                 <Image

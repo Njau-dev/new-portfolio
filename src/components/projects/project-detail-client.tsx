@@ -288,7 +288,7 @@ const ProjectDetailClient = ({ project }: Props) => {
 
                         {/* Sidebar */}
                         <div className="lg:w-1/3">
-                            <div className="sticky top-8 space-y-6">
+                            <div className="sticky top-16 space-y-6">
                                 {/* Project Info Card */}
                                 <div className="border border-gray/70 bg-background p-6">
                                     <h3 className="text-white text-xl font-semibold mb-4">

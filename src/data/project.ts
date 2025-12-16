@@ -116,10 +116,10 @@ export const projects: Project[] = [
     // CLI Projects
     {
         id: 'cli-1',
-        title: 'DevTools CLI',
+        title: 'Scaffold CLI',
         description: 'Command-line tool for developer productivity',
         imageUrl: '/assets/cli.png',
-        techStack: ['Node.js', 'TypeScript', 'Commander.js', 'Chalk'],
+        techStack: ['Python', 'Typer', 'Poetry', 'Rich'],
         category: 'cli',
         links: {
             github: 'https://github.com/Njau-dev/scaffold-cli'
@@ -132,27 +132,27 @@ export const projects: Project[] = [
             'Code generation utilities',
             'Deployment helpers'
         ],
-        installCommand: 'npm install -g devtools-cli',
+        installCommand: 'pipx install scaffold-cli',
         cliCommands: [
             {
-                command: 'devtools init [project-name]',
+                command: 'scaffold new [project-name]',
                 description: 'Initialize a new project with template selection',
-                example: 'devtools init my-app'
+                example: 'scaffold new my-app'
             },
             {
-                command: 'devtools generate [type] [name]',
-                description: 'Generate boilerplate code (component, service, etc.)',
-                example: 'devtools generate component Button'
+                command: 'scaffold info',
+                description: 'Display information about the tool and its capabilities',
+                example: 'scaffold info'
             },
             {
-                command: 'devtools deploy [environment]',
-                description: 'Deploy project to specified environment',
-                example: 'devtools deploy production'
+                command: 'scaffold version',
+                description: 'Show the current version of the CLI tool',
+                example: 'scaffold version'
             },
             {
-                command: 'devtools env [action]',
-                description: 'Manage environment variables',
-                example: 'devtools env list'
+                command: 'scaffold list',
+                description: 'List all available project templates',
+                example: 'scaffold list'
             }
         ],
         readmeUrl: '#',
