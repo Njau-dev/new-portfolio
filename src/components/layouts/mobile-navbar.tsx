@@ -98,7 +98,7 @@ export default function MobileNavbar({
 
     return (
         <div className="md:hidden">
-            {/* Hamburger Button (keep high z to stay above overlay) */}
+            {/* Hamburger Button */}
             <button
                 onClick={toggleMenu}
                 className="p-2 rounded-md text-gray hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray relative z-50"
