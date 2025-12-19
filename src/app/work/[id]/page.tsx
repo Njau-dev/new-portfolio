@@ -5,6 +5,7 @@ import Button from '@/components/ui/button';
 import { ArrowLeft, ExternalLink, Calendar, MapPin, Users } from 'lucide-react';
 import { clientProjects, workExperiences } from '@/data/work';
 import type { WorkExperience, ClientProject, WorkDetailPageProps } from '@/types';
+import AnimatedCounter from '@/components/ui/animated-counter';
 
 // Generate static params for all work experiences and client projects
 export async function generateStaticParams() {
@@ -257,9 +258,7 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
                                     <div className="space-y-6">
                                         {experience.metrics.map((metric, index) => (
                                             <div key={index}>
-                                                <p className="text-primary text-3xl font-bold mb-1">
-                                                    {metric.value}
-                                                </p>
+                                                <AnimatedCounter target={parseInt(metric.value)} duration={1200} className="text-primary text-3xl font-bold mb-1" />
                                                 <p className="text-white font-medium mb-1">
                                                     {metric.label}
                                                 </p>

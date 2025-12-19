@@ -6,7 +6,7 @@ import { SectionProps } from '@/types';
 
 const WorkSection = ({ header }: SectionProps) => {
     return (
-        <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
+        <section className={`w-full max-w-7xl mx-auto px-4 ${header ? 'py-12 md:py-20' : 'py-0 md:py-0'} `}>
             {header ? <SectionHeader title="work" hero={true} /> : null}
 
             <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-40 mt-8">
@@ -44,7 +44,7 @@ const WorkSection = ({ header }: SectionProps) => {
             </div>
 
             <div className="hidden lg:block relative mt-12">
-                <div className="absolute -left-20 top-0 w-32 h-32 opacity-50">
+                <div className="absolute left-0 top-0 w-32 h-32 opacity-50">
                     <Image
                         src="/logo-pattern.svg"
                         alt="decorative logo pattern"

@@ -7,13 +7,13 @@ import Button from './button';
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
-        <div className="flex flex-col border border-gray/50 bg-background h-full transition-shadow hover:shadow-lg">
+        <div className="flex flex-col border border-gray/50 bg-background h-full transition-all duration-300 group hover:-translate-y-1 hover:scale-[1.01] hover:shadow-[0_14px_30px_rgba(199,120,221,0.12)]">
             <div className="relative w-full h-48 overflow-hidden group">
                 <Image
                     src={project.imageUrl}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover transition-transform duration-300 group-hover:scale-103"
                 />
             </div>
 

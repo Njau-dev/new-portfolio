@@ -4,6 +4,7 @@ import ClientProjectCard from '@/components/ui/client-project-card';
 import { clientProjects } from '@/data/work';
 import WorkSection from '@/components/sections/work';
 import PageHeader from '@/components/ui/page-header';
+import AnimatedCounter from '@/components/ui/animated-counter';
 
 const WorkPage = () => {
     return (
@@ -15,13 +16,13 @@ const WorkPage = () => {
 
             {/* Professional Experience Section */}
             <section className="w-full max-w-7xl mx-auto py-12 md:py-20">
-                <SectionHeader title="professional-experience" className="mx-auto px-6" />
+                <SectionHeader title="professional-experience" className="mx-auto px-4" />
 
                 <WorkSection header={false} />
             </section>
 
             {/* Client Projects Section */}
-            <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
+            <section className="w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
                 <SectionHeader title="client-projects" />
 
                 <div className="mt-8">
@@ -43,7 +44,7 @@ const WorkPage = () => {
 
 
             {/* Statistics Section */}
-            <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
+            <section className="w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
                 <SectionHeader title="impact" hero={false} />
 
                 <div className="border border-gray/70 bg-background p-8 md:p-12 relative overflow-hidden">
@@ -54,19 +55,20 @@ const WorkPage = () => {
 
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                             <div className="text-center">
-                                <p className="text-primary text-4xl md:text-5xl font-bold mb-2">3+</p>
+                                {/* assume total months of experience is stored or calculated; using 44 months (~3yr8mo) as example */}
+                                <AnimatedCounter target={44} monthsToYears duration={1400} className="text-4xl md:text-5xl font-bold mb-2" />
                                 <p className="text-gray text-sm">Years Experience</p>
                             </div>
                             <div className="text-center">
-                                <p className="text-primary text-4xl md:text-5xl font-bold mb-2">25+</p>
+                                <AnimatedCounter target={25} duration={1200} postfix="+" className="text-4xl md:text-5xl font-bold mb-2" />
                                 <p className="text-gray text-sm">Projects Completed</p>
                             </div>
                             <div className="text-center">
-                                <p className="text-primary text-4xl md:text-5xl font-bold mb-2">96%</p>
+                                <AnimatedCounter target={96} duration={1200} postfix="%" className="text-4xl md:text-5xl font-bold mb-2" />
                                 <p className="text-gray text-sm">Client Satisfaction</p>
                             </div>
                             <div className="text-center">
-                                <p className="text-primary text-4xl md:text-5xl font-bold mb-2">15+</p>
+                                <AnimatedCounter target={15} duration={1200} postfix="+" className="text-4xl md:text-5xl font-bold mb-2" />
                                 <p className="text-gray text-sm">Happy Clients</p>
                             </div>
                         </div>
@@ -85,7 +87,7 @@ const WorkPage = () => {
             </section>
 
             {/* Testimonials Section */}
-            <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
+            <section className="w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
                 <SectionHeader title="testimonials" />
 
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -15,6 +15,8 @@ export default function MobileNavbar({
 }: MobileNavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [portalEl, setPortalEl] = useState<HTMLElement | null>(null);
+    const [rendered, setRendered] = useState(false);
+    const [visible, setVisible] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen((s) => !s);
@@ -42,11 +44,26 @@ export default function MobileNavbar({
         };
     }, []);
 
-    // disable body scroll when menu is open
+    // manage rendered/visible states for smooth enter/exit animations
+    useEffect(() => {
+        if (isOpen) {
+            setRendered(true);
+            // next tick, show
+            const t = window.setTimeout(() => setVisible(true), 20);
+            return () => window.clearTimeout(t);
+        } else {
+            // hide first, then unmount after animation
+            setVisible(false);
+            const t = window.setTimeout(() => setRendered(false), 320);
+            return () => window.clearTimeout(t);
+        }
+    }, [isOpen]);
+
+    // disable body scroll while menu is rendered
     useEffect(() => {
         if (typeof document === "undefined") return;
         const prev = document.body.style.overflow;
-        if (isOpen) {
+        if (rendered) {
             document.body.style.overflow = "hidden";
         } else {
             document.body.style.overflow = prev || "";
@@ -54,11 +71,11 @@ export default function MobileNavbar({
         return () => {
             document.body.style.overflow = prev || "";
         };
-    }, [isOpen]);
+    }, [rendered]);
 
     // Overlay UI to be portaled
     const Overlay = (
-        <div className="fixed inset-0 z-40 bg-background/95 backdrop-blur-sm flex flex-col">
+        <div className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-sm flex flex-col transition-transform duration-300 ease-in-out ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'}`}>
             <div>
                 {/* Close button and header */}
                 <div className="flex justify-between items-center p-6">
@@ -122,7 +139,7 @@ export default function MobileNavbar({
             </button>
 
             {/* Portal overlay (renders at document.body level) */}
-            {portalEl && isOpen && createPortal(Overlay, portalEl)}
+            {portalEl && rendered && createPortal(Overlay, portalEl)}
         </div>
     );
 }

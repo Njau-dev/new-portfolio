@@ -28,7 +28,7 @@ export default function SocialSidebar() {
     ];
 
     return (
-        <aside className="hidden xl:flex fixed left-10 top-0 z-40">
+        <aside className="hidden xl:flex bg-background px-2 pb-2 fixed left-10 top-0 z-40">
             <div className="flex flex-col items-center gap-6">
 
                 {/* Vertical Line */}
