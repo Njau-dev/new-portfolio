@@ -7,6 +7,7 @@ import Link from "next/link";
 import { XIcon } from "lucide-react";
 import SocialIcons from "../ui/social-icons";
 import { MobileNavbarProps } from "@/types";
+import ThemeControls from "./theme-controls";
 
 export default function MobileNavbar({
     navItems,
@@ -109,6 +110,10 @@ export default function MobileNavbar({
 
             <div className="flex flex-col items-center w-full mt-4">
                 <SocialIcons className="py-8" />
+            </div>
+
+            <div className="flex items-center justify-center">
+                <ThemeControls compact={true} />
             </div>
         </div>
     );

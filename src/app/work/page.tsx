@@ -75,9 +75,9 @@ const WorkPage = () => {
                     </div>
 
                     {/* Background pattern */}
-                    <div className="absolute inset-0 opacity-5">
+                    <div className="absolute inset-0 opacity-3">
                         <Image
-                            src="/pattern.svg"
+                            src="/logo-pattern.svg"
                             alt="background pattern"
                             fill
                             className="object-cover"

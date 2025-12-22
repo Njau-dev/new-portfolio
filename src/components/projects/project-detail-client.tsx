@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/ui/button';
@@ -17,6 +17,15 @@ interface Props {
 const ProjectDetailClient = ({ project }: Props) => {
     const [showPlayground, setShowPlayground] = useState(false);
     const [showReadme, setShowReadme] = useState(false);
+
+    // stop background scroll when modals are open
+    useEffect(() => {
+        if (showPlayground || showReadme) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }, [showPlayground, showReadme]);
 
     return (
         <>

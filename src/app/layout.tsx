@@ -6,6 +6,7 @@ import Footer from "@/components/layouts/footer";
 import Background from "@/components/layouts/background";
 import SocialSidebar from "@/components/layouts/social-sidebar";
 import BackToTop from "@/components/layouts/back-to-top";
+import ThemeControls from "@/components/layouts/theme-controls";
 import ScrollProgress from "@/components/layouts/scroll-progress";
 import PageTransitions from "@/components/layouts/page-transitions";
 
@@ -32,6 +33,11 @@ export default function RootLayout({
       >
         {/* Social sidebar */}
         <SocialSidebar />
+
+        {/* Desktop theme controls (visible on md+) */}
+        <div className="hidden xl:flex fixed bottom-28 right-6 z-50 px-2 pb-2 bg-background">
+          <ThemeControls />
+        </div>
 
         {/* Scroll progress indicator */}
         <ScrollProgress />

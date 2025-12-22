@@ -1,17 +1,15 @@
 'use client';
-
 import { useState } from 'react';
-import Image from 'next/image';
 import PageHeader from '@/components/ui/page-header';
 import ProjectCard from '@/components/ui/project-card';
 import SectionHeader from '@/components/ui/section-header';
 import { ProjectCategory } from '@/types/project';
 import { categories, getProjectsByCategory } from '@/data/project';
 import { getCategoryIcon } from '@/utils/project-icon';
+import ProjectProcess from '@/components/sections/project-process';
 
 const Projects = () => {
     const [activeCategory, setActiveCategory] = useState<ProjectCategory>('web');
-
     const filteredProjects = getProjectsByCategory(activeCategory);
 
     return (
@@ -55,6 +53,9 @@ const Projects = () => {
                     </div>
                 )}
             </div>
+
+            {/* Process Section */}
+            <ProjectProcess />
         </div>
     );
 };
