@@ -381,6 +381,7 @@ const ProjectDetailClient = ({ project }: Props) => {
                     commands={project.cliCommands}
                     projectTitle={project.title}
                     installCommand={project.installCommand}
+                    terminalUrl={project.terminalUrl || ''}
                     githubUrl={project.links.github}
                     onClose={() => setShowPlayground(false)}
                     onOpenReadme={() => {

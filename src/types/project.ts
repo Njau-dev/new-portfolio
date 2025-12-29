@@ -48,6 +48,7 @@ export interface Project {
     readmeUrl?: string;
     readmeContent?: string;
     installCommand?: string;
+    terminalUrl?: string;
 
     // Mobile specific fields
     platform?: 'iOS' | 'Android' | 'Cross-platform';
@@ -67,6 +68,7 @@ export interface CLIPlaygroundProps {
     commands: CLICommand[];
     projectTitle: string;
     installCommand?: string;
+    terminalUrl: string;
     githubUrl?: string;
     onClose: () => void;
     onOpenReadme?: () => void;

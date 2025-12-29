@@ -1,152 +1,106 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { Terminal, X, BookOpen } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Terminal, X, BookOpen, Maximize2, Minimize2, RefreshCw } from 'lucide-react';
 import { CLIPlaygroundProps } from '@/types/project';
 
-const CLIPlayground = ({ commands, projectTitle, installCommand, githubUrl, onClose, onOpenReadme }: CLIPlaygroundProps) => {
-    const [input, setInput] = useState('');
-    const [history, setHistory] = useState<Array<{ type: 'command' | 'output' | 'error'; text: string }>>([
-        { type: 'output', text: `Welcome to ${projectTitle} playground!` },
-        { type: 'output', text: 'Type "help" to see available commands or click "View Docs" for full documentation.' },
-        { type: 'output', text: '---' }
-    ]);
-    const [commandHistory, setCommandHistory] = useState<string[]>([]);
-    const [historyIndex, setHistoryIndex] = useState(-1);
-    const inputRef = useRef<HTMLInputElement>(null);
-    const outputRef = useRef<HTMLDivElement>(null);
+const CLIPlayground = ({
+    commands,
+    projectTitle,
+    installCommand,
+    githubUrl,
+    terminalUrl,
+    onClose,
+    onOpenReadme
+}: CLIPlaygroundProps) => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [isFullscreen, setIsFullscreen] = useState(false);
+    const [showHelp, setShowHelp] = useState(true);
+    const iframeRef = useRef<HTMLIFrameElement>(null);
 
     useEffect(() => {
-        if (outputRef.current) {
-            outputRef.current.scrollTop = outputRef.current.scrollHeight;
-        }
-    }, [history]);
+        // Hide help after 5 seconds
+        const timer = setTimeout(() => setShowHelp(false), 5000);
+        return () => clearTimeout(timer);
+    }, []);
 
-    const processCommand = (cmd: string) => {
-        const trimmedCmd = cmd.trim().toLowerCase();
-
-        if (!trimmedCmd) return;
-
-        // Add command to history
-        setHistory(prev => [...prev, { type: 'command', text: `$ ${cmd}` }]);
-        setCommandHistory(prev => [...prev, cmd]);
-        setHistoryIndex(-1);
-
-        // Process commands
-        if (trimmedCmd === 'help') {
-            setHistory(prev => [
-                ...prev,
-                { type: 'output', text: 'Available commands:' },
-                { type: 'output', text: '---' },
-                ...commands.map(c => ({ type: 'output' as const, text: `  ${c.command}` })),
-                { type: 'output', text: '' },
-                { type: 'output', text: 'Other commands:' },
-                { type: 'output', text: '  help - Show this help message' },
-                { type: 'output', text: '  clear - Clear terminal' },
-                { type: 'output', text: '  install - Show installation command' },
-                { type: 'output', text: '  docs - View full documentation' },
-                { type: 'output', text: '---' }
-            ]);
-        } else if (trimmedCmd === 'clear') {
-            setHistory([
-                { type: 'output', text: `Welcome to ${projectTitle} playground!` },
-                { type: 'output', text: 'Type "help" to see available commands.' },
-                { type: 'output', text: '---' }
-            ]);
-        } else if (trimmedCmd === 'install') {
-            if (installCommand) {
-                setHistory(prev => [
-                    ...prev,
-                    { type: 'output', text: `Installation command:` },
-                    { type: 'output', text: `  ${installCommand}` },
-                    { type: 'output', text: '---' }
-                ]);
-            } else {
-                setHistory(prev => [...prev, { type: 'error', text: 'No installation command available.' }]);
-            }
-        } else if (trimmedCmd === 'docs') {
-            setHistory(prev => [
-                ...prev,
-                { type: 'output', text: 'Opening documentation...' },
-                { type: 'output', text: 'Click the "View Docs" button at the top to view full documentation.' },
-                { type: 'output', text: '---' }
-            ]);
-            if (onOpenReadme) {
-                setTimeout(() => onOpenReadme(), 500);
-            }
-        } else {
-            // Check if command matches any available commands
-            const matchedCommand = commands.find(c =>
-                trimmedCmd.startsWith(c.command.toLowerCase().split('[')[0].trim())
-            );
-
-            if (matchedCommand) {
-                setHistory(prev => [
-                    ...prev,
-                    { type: 'output', text: `✓ Executing: ${matchedCommand.command}` },
-                    { type: 'output', text: `Description: ${matchedCommand.description}` },
-                    { type: 'output', text: `Example: ${matchedCommand.example}` },
-                    { type: 'output', text: '✓ Command completed successfully!' },
-                    { type: 'output', text: '---' }
-                ]);
-            } else {
-                setHistory(prev => [
-                    ...prev,
-                    { type: 'error', text: `Command not found: ${cmd}` },
-                    { type: 'error', text: 'Type "help" to see available commands.' },
-                    { type: 'output', text: '---' }
-                ]);
-            }
-        }
-
-        setInput('');
+    const handleIframeLoad = () => {
+        setIsLoading(false);
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            processCommand(input);
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            if (commandHistory.length > 0) {
-                const newIndex = historyIndex === -1 ? commandHistory.length - 1 : Math.max(0, historyIndex - 1);
-                setHistoryIndex(newIndex);
-                setInput(commandHistory[newIndex]);
-            }
-        } else if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            if (historyIndex !== -1) {
-                const newIndex = Math.min(commandHistory.length - 1, historyIndex + 1);
-                setHistoryIndex(newIndex);
-                setInput(commandHistory[newIndex]);
-            }
-        } else if (e.key === 'l' && (e.ctrlKey || e.metaKey)) {
-            e.preventDefault();
-            processCommand('clear');
+    const handleRefresh = () => {
+        if (iframeRef.current) {
+            setIsLoading(true);
+            // Add timestamp to force reload and bust cache
+            iframeRef.current.src = terminalUrl + '?reload=' + Date.now();
         }
+    };
+
+    const toggleFullscreen = () => {
+        setIsFullscreen(!isFullscreen);
     };
 
     return (
-        <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-4">
-            <div className="w-full max-w-6xl h-[80vh] bg-[#1e1e1e] border border-gray/70 flex flex-col">
+        <div className={`fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-4 ${isFullscreen ? 'p-0' : ''
+            }`}>
+            <div className={`w-full bg-[#1e1e1e] border border-gray/70 flex flex-col ${isFullscreen ? 'h-full max-w-none' : 'max-w-7xl h-[85vh]'
+                }`}>
                 {/* Header */}
                 <div className="flex items-center justify-between px-4 py-3 border-b border-gray/70 bg-[#252526]">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3">
                         <Terminal size={20} className="text-primary" />
-                        <span className="text-white font-medium">{projectTitle} - Playground</span>
+                        <div>
+                            <span className="text-white font-medium">{projectTitle}</span>
+                            <span className="text-gray text-sm ml-2">Live Terminal</span>
+                        </div>
                     </div>
+
                     <div className="flex items-center gap-2">
+                        {/* Help Button */}
+                        {commands && commands.length > 0 && (
+                            <button
+                                onClick={() => setShowHelp(!showHelp)}
+                                className="flex items-center gap-2 text-gray hover:text-primary transition-colors px-3 py-1 border border-gray/50 hover:border-primary text-sm"
+                                title="Toggle help"
+                            >
+                                <BookOpen size={16} />
+                                Help
+                            </button>
+                        )}
+
+                        {/* Refresh Button */}
+                        <button
+                            onClick={handleRefresh}
+                            className="text-gray hover:text-primary transition-colors p-1"
+                            title="Restart terminal"
+                        >
+                            <RefreshCw size={18} />
+                        </button>
+
+                        {/* Fullscreen Toggle */}
+                        <button
+                            onClick={toggleFullscreen}
+                            className="text-gray hover:text-primary transition-colors p-1"
+                            title={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
+                        >
+                            {isFullscreen ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
+                        </button>
+
+                        {/* Docs Button */}
                         {onOpenReadme && (
                             <button
                                 onClick={onOpenReadme}
                                 className="flex items-center gap-2 text-gray hover:text-primary transition-colors px-3 py-1 border border-gray/50 hover:border-primary text-sm"
                             >
                                 <BookOpen size={16} />
-                                View Docs
+                                Docs
                             </button>
                         )}
+
+                        {/* Close Button */}
                         <button
                             onClick={onClose}
-                            className="text-gray hover:text-white transition-colors"
+                            className="text-gray hover:text-white transition-colors p-1"
                             aria-label="Close playground"
                         >
                             <X size={20} />
@@ -154,49 +108,85 @@ const CLIPlayground = ({ commands, projectTitle, installCommand, githubUrl, onCl
                     </div>
                 </div>
 
-                {/* Terminal Output */}
-                <div
-                    ref={outputRef}
-                    className="flex-1 overflow-y-auto p-4 font-mono text-sm"
-                >
-                    {history.map((entry, index) => (
-                        <div
-                            key={index}
-                            className={`mb-1 ${entry.type === 'command'
-                                ? 'text-primary'
-                                : entry.type === 'error'
-                                    ? 'text-red-400'
-                                    : 'text-gray'
-                                }`}
-                        >
-                            {entry.text}
+                {/* Help Panel */}
+                {showHelp && commands && commands.length > 0 && (
+                    <div className="bg-primary/20 border-b border-primary/30 p-4">
+                        <div className="flex items-start justify-between gap-4">
+                            <div className="flex-1">
+                                <h3 className="text-primary font-semibold mb-2 flex items-center gap-2">
+                                    <BookOpen size={16} />
+                                    Available Commands
+                                </h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                                    {commands.slice(0, 4).map((cmd, index) => (
+                                        <div key={index} className="bg-[#1e1e1e] rounded p-2">
+                                            <code className="text-primary">{cmd.command}</code>
+                                            <p className="text-gray text-xs mt-1">{cmd.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                                {commands.length > 4 && (
+                                    <p className="text-gray text-xs mt-2">
+                                        + {commands.length - 4} more commands. Type <code className="text-primary">scaffold --help</code> to see all.
+                                    </p>
+                                )}
+                            </div>
+                            <button
+                                onClick={() => setShowHelp(false)}
+                                className="text-gray hover:text-white transition-colors"
+                            >
+                                <X size={18} />
+                            </button>
                         </div>
-                    ))}
-                </div>
-
-                {/* Input Line */}
-                <div className="border-t border-gray/70 bg-[#252526] p-4">
-                    <div className="flex items-center gap-2 font-mono text-sm">
-                        <span className="text-primary">$</span>
-                        <input
-                            ref={inputRef}
-                            type="text"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                            className="flex-1 bg-transparent text-white outline-none"
-                            placeholder="Type a command..."
-                            autoFocus
-                        />
                     </div>
+                )}
+
+                {/* Loading Overlay */}
+                {isLoading && (
+                    <div className="absolute inset-0 bg-[#1e1e1e] flex items-center justify-center z-10">
+                        <div className="text-center">
+                            <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray border-t-primary mb-4"></div>
+                            <p className="text-gray">Starting terminal...</p>
+                            <p className="text-gray text-sm mt-2">Installing {projectTitle}...</p>
+                        </div>
+                    </div>
+                )}
+
+                {/* Terminal iframe */}
+                <div className="flex-1 relative overflow-hidden">
+                    <iframe
+                        ref={iframeRef}
+                        src={terminalUrl}
+                        onLoad={handleIframeLoad}
+                        className="w-full h-full border-0"
+                        title={`${projectTitle} Terminal`}
+                        sandbox="allow-same-origin allow-scripts allow-forms"
+                    />
                 </div>
 
-                {/* Footer Hint */}
-                <div className="px-4 py-2 bg-[#1e1e1e] border-t border-gray/70 text-xs text-gray">
-                    <span className="mr-4">Press Enter to execute</span>
-                    <span className="mr-4">↑↓ for history</span>
-                    <span className="mr-4">Ctrl+L to clear</span>
-                    <span>Type "docs" for documentation</span>
+                {/* Footer */}
+                <div className="px-4 py-2 bg-[#1e1e1e] border-t border-gray/70 flex items-center justify-between text-xs text-gray">
+                    <div className="flex items-center gap-4">
+                        <span>🚀 Live Python Environment</span>
+                        <span>•</span>
+                        <span>All files are temporary</span>
+                        {installCommand && (
+                            <>
+                                <span>•</span>
+                                <span className="text-primary">{projectTitle} pre-installed</span>
+                            </>
+                        )}
+                    </div>
+                    {githubUrl && (
+                        <a
+                            href={githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-primary transition-colors"
+                        >
+                            View Source →
+                        </a>
+                    )}
                 </div>
             </div>
         </div>

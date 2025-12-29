@@ -34,7 +34,7 @@ export default function RootLayout({
         {/* Social sidebar */}
         <SocialSidebar />
 
-        {/* Desktop theme controls (visible on md+) */}
+        {/* Desktop theme controls) */}
         <div className="hidden xl:flex fixed bottom-28 right-6 z-50 px-2 pb-2 bg-background">
           <ThemeControls />
         </div>
@@ -47,13 +47,15 @@ export default function RootLayout({
 
         {/* Main content wrapper with relative positioning */}
         <div className="relative z-0">
-          {/* Background patterns - positioned relative to content height */}
+          {/* Background patterns*/}
           <Background />
 
           <Navbar />
+
           <div className="relative top-20 ">
             <PageTransitions>{children}</PageTransitions>
           </div>
+
           <Footer />
         </div>
       </body>

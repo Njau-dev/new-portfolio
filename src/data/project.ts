@@ -133,6 +133,7 @@ export const projects: Project[] = [
             'Deployment helpers'
         ],
         installCommand: 'pipx install scaffold-cli',
+        terminalUrl: 'https://scaffold-cli-playground.fly.dev',
         cliCommands: [
             {
                 command: 'scaffold new [project-name]',
