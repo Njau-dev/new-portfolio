@@ -1,35 +1,32 @@
-export interface FunFact {
-    id: number;
-    text: string;
-}
+import { FunFact } from "@/types/skill";
 
 export const funFacts: FunFact[] = [
     {
         id: 1,
-        text: "I like winter more than summer"
+        text: "I love late night walks"
     },
     {
         id: 2,
-        text: "I often bike with my friends"
+        text: "I enjoy sightseeing and discovering new places and cultures"
     },
     {
         id: 3,
-        text: "I like ____ and ____"
+        text: "Gaming is my go-to way to relax"
     },
     {
         id: 4,
-        text: "I was in ____, ____ and ____"
+        text: "Life without music? I can't cope!"
     },
     {
         id: 5,
-        text: "My favorite movie is ____"
+        text: "I am a big fan of anime and manga"
     },
     {
         id: 6,
-        text: "I am still in school"
+        text: "My favorite anime is Attack on Titan"
     },
     {
         id: 7,
-        text: "I don't have any siblings"
+        text: "I overthink things… way more than I should"
     }
 ];

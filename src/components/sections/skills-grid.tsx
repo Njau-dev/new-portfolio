@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import SectionHeader from '../ui/section-header';
 import SkillCard from '../ui/skill-card';
 import { skills } from '@/data/skills';

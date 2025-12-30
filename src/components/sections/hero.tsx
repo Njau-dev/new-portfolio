@@ -13,11 +13,11 @@ export default function Hero() {
                     <div className="space-y-4 md:space-y-6 order-1">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight">
                             <span className="">Jeff is a <span className="text-primary">web designer</span> and </span>
-                            <span className="text-primary block">back-end developer</span>
+                            <span className="text-primary block">full-stack developer</span>
                         </h1>
 
                         <p className="text-lg md:text-xl text-gray leading-relaxed max-w-2xl">
-                            He crafts responsive websites where technologies meet creativity
+                            He crafts responsive, secure, scalable web applications with Laravel, React & Python that align with your business needs.
                         </p>
 
                         <div className="flex justify-center lg:justify-start gap-4 pt-4">

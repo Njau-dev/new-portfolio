@@ -46,17 +46,6 @@ export interface SocialIconsProps {
     items?: IconItem[];
 }
 
-export interface Skill {
-    id: number;
-    category: string;
-    skills: string[];
-}
-
-export interface SkillCardProps {
-    skill: Skill;
-}
-
-
 export interface SectionProps {
     header: boolean;
 }

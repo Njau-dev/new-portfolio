@@ -17,16 +17,15 @@ const AboutSection = ({ header }: SectionProps) => {
 
                     <div className="space-y-4 text-gray">
                         <p className="leading-relaxed">
-                            I'm a self-taught front-end developer based in Kyiv, Ukraine.
-                            I can develop responsive websites from scratch and raise them
-                            into modern user-friendly web experiences.
+                            I'm a full-stack developer with a background in automotive engineering and sales, passionate about building technology solutions that solve real problems.
                         </p>
 
                         <p className="leading-relaxed">
-                            Transforming my creativity and knowledge into a websites has
-                            been my passion for over a year. I have been helping various
-                            clients to establish their presence online. I always strive
-                            to learn about the newest technologies and frameworks.
+                            I specialize in Laravel, React, Python, and PostgreSQL, and have experience designing secure APIs, architecting databases, and deploying scalable applications. I enjoy taking on multiple roles, learning continuously, and delivering impactful solutions for businesses and users.
+                        </p>
+
+                        <p className="leading-relaxed">
+                            Over the years, I've led projects from conception to production, mentoring teams, and collaborating with clients to turn ideas into working products. I'm eager to continue growing while building innovative, high-quality software.
                         </p>
                     </div>
 

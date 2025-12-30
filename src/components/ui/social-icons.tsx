@@ -2,12 +2,14 @@
 
 import { IconItem, SocialIconsProps } from "@/types";
 import { Github, Twitter, Linkedin, Slack } from "lucide-react";
+import { FaDiscord, FaReddit } from "react-icons/fa";
 
 const defaultItems: IconItem[] = [
     { href: "https://github.com/Njau-dev", label: "GitHub", Icon: Github },
-    { href: "https://twitter.com/your-username", label: "Twitter", Icon: Twitter },
-    { href: "https://linkedin.com/in/your-username", label: "LinkedIn", Icon: Linkedin },
-    { href: "https://slack.com/", label: "Slack", Icon: Slack },
+    { href: "https://x.com/dzeph01", label: "Twitter", Icon: Twitter },
+    { href: "https://linkedin.com/in/jeff-njau", label: "LinkedIn", Icon: Linkedin },
+    { href: "https://discord.com/users/njau_dev", label: "Discord", Icon: FaDiscord },
+    { href: "https://reddit.com/user/scented_dustbin", label: "Reddit", Icon: FaReddit }
 ];
 
 export default function SocialIcons({ size = 20, className = "", items = defaultItems }: SocialIconsProps) {

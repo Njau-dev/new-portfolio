@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SectionHeader from '../ui/section-header';
 import { Github, Twitter, Linkedin, Slack, Mail } from 'lucide-react';
 import { BsWhatsapp } from 'react-icons/bs';
+import { FaDiscord, FaReddit } from 'react-icons/fa';
 
 interface MediaItem {
     name: string;
@@ -14,40 +15,46 @@ interface MediaItem {
 const mediaItems: MediaItem[] = [
     {
         name: 'Whatsapp',
-        username: 'Jeff Njau',
+        username: 'Whatsapp',
         href: 'https://wa.me/254705984048',
         Icon: BsWhatsapp
     },
     {
         name: 'Email',
-        username: 'Jeff Njau',
+        username: 'Email',
         href: 'mailto:jeffnjau01@gmail.com',
         Icon: Mail
     },
     {
         name: 'Github',
-        username: '@Njau-dev',
+        username: 'Github',
         href: 'https://github.com/Njau-dev',
         Icon: Github
     },
     {
         name: 'Twitter',
-        username: '@your-username',
-        href: 'https://twitter.com/your-username',
+        username: 'X',
+        href: 'https://x.com/dzeph01',
         Icon: Twitter
     },
     {
         name: 'Linkedin',
-        username: '@Jeff-njau',
+        username: 'LinkedIn',
         href: 'https://linkedin.com/in/jeff-njau',
         Icon: Linkedin
     },
     {
-        name: 'Slack',
-        username: '@your-workspace',
-        href: 'https://slack.com/',
-        Icon: Slack
+        name: 'Discord',
+        username: 'Discord',
+        href: 'https://discord.com/users/njau_dev',
+        Icon: FaDiscord
     },
+    {
+        name: 'Reddit',
+        username: 'Reddit',
+        href: 'https://reddit.com/user/scented_dustbin',
+        Icon: FaReddit
+    }
 
 ];
 

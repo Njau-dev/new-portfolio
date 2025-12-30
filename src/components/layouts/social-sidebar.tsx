@@ -1,4 +1,3 @@
-// components/layouts/social-sidebar.tsx
 import Link from "next/link";
 import { Github, Linkedin, MessageCircle } from "lucide-react";
 import { FaReddit, FaWhatsapp } from "react-icons/fa";
@@ -18,7 +17,7 @@ export default function SocialSidebar() {
         {
             name: "Reddit",
             icon: <FaReddit className="w-5 h-5" />,
-            href: "https://reddit.com/user/yourusername"
+            href: "https://reddit.com/user/scented_dustbin"
         },
         {
             name: "WhatsApp",

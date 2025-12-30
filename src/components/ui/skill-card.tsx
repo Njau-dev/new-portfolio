@@ -1,5 +1,5 @@
 import React from 'react';
-import { SkillCardProps } from '@/types';
+import { SkillCardProps } from '@/types/skill';
 
 const SkillCard: React.FC<SkillCardProps> = ({ skill }) => {
     return (
