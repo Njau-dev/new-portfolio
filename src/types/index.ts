@@ -83,7 +83,6 @@ export interface ClientProject {
     category: string; // e.g., "E-commerce", "Portfolio", "SaaS"
     description: string;
     technologies: string[];
-    // Detailed page data
     overview: string;
     challenge: string;
     solution: string;

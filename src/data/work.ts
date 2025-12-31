@@ -3,289 +3,275 @@ import { ClientProject, WorkExperience } from "@/types";
 
 export const workExperiences: WorkExperience[] = [
     {
-        id: "tech-company-senior",
-        company: "Tech Company",
-        position: "Senior Frontend Developer",
-        period: "2023 - Present",
-        location: "Remote",
-        type: 'employment',
+        id: "lixnet-technologies",
+        company: "Lixnet Technologies",
+        position: "Team Lead / Full-Stack Developer",
+        period: "May 2025 – Nov 2025",
+        location: "Remote — Nairobi, Kenya",
+        type: "employment",
+        overview:
+            "Worked on two core company products: an HR & Payroll system and later led development of the Lixnet Marketplace, an e-commerce platform for selling software solutions to small businesses.",
         description: [
-            "Led development of responsive web applications using Next.js and React",
-            "Collaborated with cross-functional teams to deliver high-quality products",
-            "Implemented modern UI/UX designs with Tailwind CSS",
-            "Optimized application performance and accessibility"
+            "Stabilized and enhanced an existing HR & Payroll system with primary ownership of the payroll module.",
+            "Led a new product team in the design and development of the Lixnet Marketplace e-commerce platform."
         ],
-        technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "GraphQL"],
-        overview: "Leading frontend development initiatives for a fast-growing tech company, focusing on building scalable web applications that serve thousands of users daily.",
         responsibilities: [
-            "Architecting and developing new features for the main product dashboard",
-            "Mentoring junior developers and conducting code reviews",
-            "Collaborating with product managers and designers on feature planning",
-            "Implementing automated testing and CI/CD pipelines",
-            "Optimizing application performance and Core Web Vitals"
+            "Identified and fixed 100+ critical payroll bugs affecting salary calculations and statutory deductions.",
+            "Designed and implemented a centralized payroll calculation engine compliant with Kenyan regulations (NSSF, SHIF, Housing Levy).",
+            "Refactored legacy Laravel code to improve data validation, accuracy, and reliability of payroll processing.",
+            "Built and secured RESTful APIs consumed by a Flutter mobile application using JWT authentication and role-based access control.",
+            "Transitioned into a team lead role to architect and develop the Lixnet Marketplace.",
+            "Led a team of 4 developers through system design, feature development, code reviews, and sprint planning.",
+            "Implemented core e-commerce features including product catalog, cart management, and checkout workflows."
         ],
         achievements: [
-            "Reduced initial page load time by 60% through code splitting and optimization",
-            "Led migration from Create React App to Next.js, improving SEO and performance",
-            "Established component library used across 5 different products",
-            "Improved accessibility score from 72 to 98 on Lighthouse audits"
+            "Stabilized a previously bug-prone payroll system and aligned it with Kenyan statutory compliance requirements.",
+            "Delivered a functional and scalable marketplace foundation adopted by the business for software product sales.",
+            "Provided technical leadership and mentorship to a small development team during a critical product phase."
+        ],
+        technologies: [
+            "Laravel",
+            "MySQL",
+            "Blade",
+            "React",
+            "TypeScript",
+            "Tailwind CSS",
+            "REST APIs",
+            "JWT Authentication",
+            "Flutter"
         ],
         metrics: [
             {
-                label: "Performance Boost",
-                value: "60%",
-                description: "Faster page load times"
+                label: "Payroll Bugs Fixed",
+                value: "100",
+                description: "Critical payroll calculation issues resolved"
             },
             {
-                label: "Code Coverage",
-                value: "85%",
-                description: "Test coverage achieved"
+                label: "Team Size",
+                value: "4",
+                description: "Developers led"
             },
             {
-                label: "User Satisfaction",
-                value: "4.8/5",
-                description: "Average user rating"
+                label: "Compliance",
+                value: "100%",
+                description: "Kenyan statutory payroll rules implemented"
             }
         ],
-        images: ["/assets/hero_image.png", "/assets/cli.png"],
-        teamSize: "8 developers",
-        duration: "1.5 years",
-        website: "https://example.com"
-    },
-    {
-        id: "digital-agency-frontend",
-        company: "Digital Agency",
-        position: "Frontend Developer",
-        period: "2022 - 2023",
-        location: "Nairobi, Kenya",
-        type: 'employment',
-        description: [
-            "Developed and maintained client websites and web applications",
-            "Worked closely with designers to implement pixel-perfect designs",
-            "Integrated RESTful APIs and third-party services",
-            "Ensured cross-browser compatibility and responsive design"
+        teamSize: "4 developers",
+        duration: "7 months",
+        website: "https://lixnet.net",
+        images: [
+            "/assets/payroll.png",
+            "/assets/payroll-employees.png",
+            "/assets/payroll-reports.png",
+            "/assets/marketplace.png",
+            "/assets/marketplace-agent.png",
+            "/assets/marketplace-mobile.png"
         ],
-        technologies: ["React", "JavaScript", "CSS", "Git", "Figma"],
-        overview: "Delivered high-quality web solutions for diverse clients ranging from startups to established businesses across various industries.",
-        responsibilities: [
-            "Building responsive websites from design mockups",
-            "Integrating payment gateways and third-party APIs",
-            "Maintaining and updating existing client websites",
-            "Collaborating with backend developers on API design",
-            "Providing technical estimates and project timelines"
-        ],
-        achievements: [
-            "Successfully delivered 15+ client projects on time and within budget",
-            "Improved development workflow by introducing component-based architecture",
-            "Reduced bug reports by 40% through comprehensive testing",
-            "Received 5-star ratings from 12 out of 15 clients"
-        ],
-        metrics: [
-            {
-                label: "Projects Delivered",
-                value: "15+",
-                description: "Successfully completed"
-            },
-            {
-                label: "Client Satisfaction",
-                value: "96%",
-                description: "Positive feedback rate"
-            },
-            {
-                label: "Bug Reduction",
-                value: "40%",
-                description: "Fewer issues reported"
-            }
-        ],
-        images: ["/assets/mini-shop.png", "/assets/payroll.png"],
-        teamSize: "5 developers",
-        duration: "1 year"
-    },
-    {
-        id: "startup-junior",
-        company: "Startup Co",
-        position: "Junior Developer",
-        period: "2021 - 2022",
-        location: "Nairobi, Kenya",
-        type: 'employment',
-        description: [
-            "Built reusable components and frontend libraries",
-            "Participated in code reviews and agile development processes",
-            "Contributed to improving development workflows",
-            "Learned and applied best practices in web development"
-        ],
-        technologies: ["HTML", "CSS", "JavaScript", "React", "Redux"],
-        overview: "Started my professional journey in a dynamic startup environment, contributing to the development of the company's core product while rapidly expanding my technical skills.",
-        responsibilities: [
-            "Developing UI components following design system guidelines",
-            "Writing unit tests for components and functions",
-            "Participating in daily standups and sprint planning",
-            "Documenting code and creating technical guides",
-            "Fixing bugs and implementing minor features"
-        ],
-        achievements: [
-            "Built a reusable form component library used across the application",
-            "Improved form validation reducing user errors by 35%",
-            "Contributed to 50+ pull requests in the first 6 months",
-            "Received 'Rising Star' award for quick learning and contributions"
-        ],
-        metrics: [
-            {
-                label: "Components Built",
-                value: "25+",
-                description: "Reusable UI components"
-            },
-            {
-                label: "Error Reduction",
-                value: "35%",
-                description: "Fewer form errors"
-            },
-            {
-                label: "Pull Requests",
-                value: "50+",
-                description: "In first 6 months"
-            }
-        ],
-        images: ["/assets/about-image.png"],
-        teamSize: "3 developers",
-        duration: "1 year"
     }
 ];
 
 export const clientProjects: ClientProject[] = [
     {
-        id: "ecommerce-fashion",
-        clientName: "Fashion Boutique Ltd",
-        projectName: "Modern E-commerce Platform",
-        period: "Q3 2024",
-        type: 'client',
+        id: "phone-home-kenya",
+        clientName: "Phone Home Kenya",
+        projectName: "Electronics E-commerce Platform",
+        period: "2024 – Present",
+        type: "client",
         category: "E-commerce",
-        description: "Built a full-featured e-commerce platform with shopping cart, payment integration, and inventory management for a growing fashion boutique.",
-        technologies: ["Next.js", "Stripe", "Tailwind CSS", "Prisma", "PostgreSQL"],
-        overview: "Developed a modern, mobile-first e-commerce platform that increased online sales by 150% within the first three months of launch.",
-        challenge: "The client had an outdated website with poor mobile experience and no proper inventory management, resulting in lost sales and customer frustration.",
-        solution: "Created a responsive Next.js application with real-time inventory updates, seamless checkout experience, and integrated analytics to track customer behavior and optimize conversions.",
+        description:
+            "Full-stack e-commerce platform for selling electronics with secure payments, role-based access, and scalable infrastructure.",
+        technologies: [
+            "React",
+            "Flask",
+            "PostgreSQL",
+            "Redis",
+            "Cloudinary",
+            "M-Pesa API",
+            "Nginx"
+        ],
+        overview:
+            "Designed, built, and deployed a production-ready electronics e-commerce platform handling real transactions, inventory management, and media-heavy product catalogs.",
+        challenge:
+            "The client needed a secure, scalable e-commerce solution with local payment integration (M-Pesa), efficient product management, and proper role-based access control for administrators and customers.",
+        solution:
+            "Built a full-stack platform with a Flask backend, React frontend, and PostgreSQL database. Integrated M-Pesa API for payments, implemented JWT-based role access, optimized performance using Redis caching, and deployed the system on a VPS using Docker and Nginx.",
         features: [
-            "Real-time inventory synchronization",
-            "Secure payment processing with Stripe",
-            "Advanced product filtering and search",
-            "Customer accounts and order history",
-            "Admin dashboard for inventory management",
-            "Email notifications for orders and shipping"
+            "M-Pesa payment integration (production)",
+            "Admin and customer role-based access",
+            "Product catalog with pagination",
+            "Image management via Cloudinary",
+            "Redis caching for performance",
+            "Dockerized VPS deployment"
         ],
         metrics: [
             {
-                label: "Sales Increase",
-                value: "150%",
-                description: "Growth in first 3 months"
+                label: "Products Managed",
+                value: "100+",
+                description: "Product images handled via Cloudinary"
             },
             {
-                label: "Mobile Conversions",
-                value: "85%",
-                description: "Of total transactions"
-            },
-            {
-                label: "Page Speed",
-                value: "95/100",
-                description: "Google PageSpeed score"
+                label: "Transactions",
+                value: "10+",
+                description: "Completed real payments"
             }
         ],
-        images: ["/assets/mini-shop.png", "/assets/hero_image.png"],
+        images: [
+            "/assets/phk-landing.png",
+            "/assets/phk-shop.png",
+            "/assets/phk-detail.png",
+            "/assets/phk-profile.png",
+            "/assets/phk-mpesa.png",
+            "/assets/phk-mobile.png",
+            "/assets/phk-mobile-2.png",
+            "/assets/phk-mobile-3.png",
+        ],
         testimonial: {
-            text: "Jeff transformed our online presence completely. Our sales have more than doubled, and customers love the new website. Highly recommended!",
-            author: "Sarah Johnson",
-            role: "Owner, Fashion Boutique Ltd"
+            text:
+                "The platform works exactly as we needed. Payments are reliable, the admin system is easy to use, and performance has been solid even with many products.",
+            author: "Emmanuel Juma",
+            role: "Phone Home Kenya"
         },
-        liveUrl: "https://fashionboutique.example.com"
+        liveUrl: "https://www.phonehome.co.ke"
     },
     {
-        id: "saas-payroll",
-        clientName: "PayFlow Solutions",
-        projectName: "Cloud Payroll Management System",
-        period: "Q1 2024",
-        type: 'client',
-        category: "SaaS",
-        description: "Developed a comprehensive payroll management system for small to medium businesses with automated tax calculations and reporting.",
-        technologies: ["React", "Node.js", "TypeScript", "MongoDB", "AWS"],
-        overview: "Built a scalable SaaS platform that streamlines payroll processing for SMBs, reducing processing time from hours to minutes.",
-        challenge: "Small businesses were struggling with manual payroll calculations, tax compliance, and generating reports, leading to errors and wasted time.",
-        solution: "Designed and developed an intuitive payroll system with automated calculations, tax compliance features, and one-click report generation that integrates with popular accounting software.",
+        id: "audiopine-solutions",
+        clientName: "AudioPine Solutions",
+        projectName: "Agency Website",
+        period: "2024 – 2025",
+        type: "client",
+        category: "Agency / Business",
+        description:
+            "Agency website built to showcase services, attract clients, and support digital solutions delivery.",
+        technologies: ["React", "Tailwind CSS", "VPS Hosting"],
+        overview:
+            "Designed and deployed the AudioPine Solutions website, managing the full lifecycle from layout design to production deployment.",
+        challenge:
+            "The agency required a professional online presence to clearly communicate services, attract new clients, and support business growth.",
+        solution:
+            "Built a responsive, SEO-friendly website with clear service sections and inquiry flows, deployed on a VPS for reliability and performance.",
         features: [
-            "Automated salary and tax calculations",
-            "Employee self-service portal",
-            "Direct deposit integration",
-            "Compliance with tax regulations",
-            "Customizable payslip templates",
-            "Multi-company management"
+            "Service showcase pages",
+            "Responsive layout",
+            "Client inquiry flow",
+            "SEO-friendly structure"
         ],
-        metrics: [
-            {
-                label: "Time Saved",
-                value: "80%",
-                description: "Payroll processing time"
-            },
-            {
-                label: "Active Users",
-                value: "500+",
-                description: "Businesses using platform"
-            },
-            {
-                label: "Accuracy",
-                value: "99.9%",
-                description: "Calculation accuracy"
-            }
+        images: [
+            "/assets/audiopine-landing.png",
+            "/assets/audiopine-light.png",
+            "/assets/audiopine-services.png",
         ],
-        images: ["/assets/payroll.png", "/assets/cli.png"],
         testimonial: {
-            text: "This system has been a game-changer for our business. What used to take us 4 hours now takes 20 minutes. The ROI was immediate.",
-            author: "Michael Chen",
-            role: "CFO, PayFlow Solutions"
+            text:
+                "The website gave our agency a professional image and helped us attract new clients quickly.",
+            author: "Clinton",
+            role: "AudioPine Solutions"
         },
-        liveUrl: "https://payflow.example.com"
+        liveUrl: "https://audiopinesolutions.co.ke"
     },
     {
-        id: "portfolio-architect",
-        clientName: "Design Studio Pro",
-        projectName: "Interactive Portfolio Website",
-        period: "Q4 2023",
-        type: 'client',
-        category: "Portfolio",
-        description: "Created a stunning portfolio website for an architecture firm featuring 3D model viewers and immersive project galleries.",
-        technologies: ["Next.js", "Three.js", "Framer Motion", "Tailwind CSS"],
-        overview: "Developed an award-winning portfolio website that showcases architectural projects through interactive 3D models and smooth animations.",
-        challenge: "The client needed a way to present their architectural projects in an engaging, interactive format that would stand out from traditional portfolio sites.",
-        solution: "Built a cutting-edge website featuring WebGL-powered 3D model viewers, smooth page transitions, and an immersive gallery experience that brings architectural designs to life.",
+        id: "whitehorse-funeral-services",
+        clientName: "Whitehorse Funeral Services",
+        projectName: "Business Website",
+        period: "2025",
+        type: "client",
+        category: "Business Website",
+        description:
+            "Static business website built to present services clearly and allow clients to make inquiries online.",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        overview:
+            "Developed a lightweight, accessible business website focused on clarity, speed, and ease of contact.",
+        challenge:
+            "The client needed an affordable online presence to communicate services and receive inquiries without complex backend systems.",
+        solution:
+            "Built a static website using HTML, CSS, and JavaScript with a responsive layout and a simple client-side contact form, hosted via GitHub Pages.",
         features: [
-            "Interactive 3D model viewers",
-            "Smooth scroll animations",
-            "Project filtering by category",
-            "Lightbox gallery with zoom",
-            "Contact form with validation",
-            "Blog section for updates"
+            "Responsive layout",
+            "Service information pages",
+            "JavaScript-powered contact form",
+            "Fast-loading static pages"
         ],
-        metrics: [
-            {
-                label: "Engagement",
-                value: "320%",
-                description: "Increase in time on site"
-            },
-            {
-                label: "Inquiries",
-                value: "65%",
-                description: "More client inquiries"
-            },
-            {
-                label: "Awards",
-                value: "3",
-                description: "Design awards won"
-            }
+        images: [
+            "/assets/whitehorse-landing.png",
+            "/assets/whitehorse-services.png",
+            "/assets/whitehorse-testimonials.png",
+            "/assets/whitehorse-mobile.png"
         ],
-        images: ["/assets/about-image.png", "/assets/hero_image.png"],
         testimonial: {
-            text: "Our new portfolio has been incredible for business. Potential clients are blown away by the interactive 3D models. Worth every penny!",
-            author: "Elena Rodriguez",
-            role: "Principal Architect, Design Studio Pro"
+            text:
+                "The website is simple, clear, and easy for our clients to use. It meets exactly what we needed.",
+            author: "Owner",
+            role: "Whitehorse Funeral Services"
         },
-        liveUrl: "https://designstudiopro.example.com"
+        liveUrl: "https://njau-dev.github.io/Whitehorse-Funeral-Services/"
+    },
+    {   
+        id: "easybank-info",
+        clientName: "EasyBank",
+        projectName: "Informational Banking Website",
+        period: "2024",
+        type: "client",
+        category: "Informational Website",
+        description:
+            "Informational website designed to present banking products, services, and institutional information.",
+        technologies: ["HTML", "CSS", "JavaScript"],
+        overview:
+            "Built an informational banking website as part of a school project, delivered using real-world client-style requirements.",
+        challenge:
+            "The goal was to present banking information clearly and professionally without transactional functionality.",
+        solution:
+            "Designed a multi-page static website with clean navigation, responsive layouts, and structured service sections using HTML, CSS, and JavaScript.",
+        features: [
+            "Multi-page informational layout",
+            "Service and product sections",
+            "Responsive design",
+            "Clear navigation structure"
+        ],
+        images: [
+            "/assets/easybank.png",
+            "/assets/easybank-1.png",
+            "/assets/easybank-about.png",
+            "/assets/easybank-mobile.png"
+        ],
+        liveUrl: "https://easy-bank-web-page.vercel.app/"
+    },
+    {
+        id: "kipepeo-digital",
+        clientName: "Kipepeo Digital",
+        projectName: "Digital Marketing Agency Website",
+        period: "2025",
+        type: "client",
+        category: "Agency / Marketing",
+        description:
+            "Agency website for a digital marketing firm focused on enhancing digital experiences and influencer marketing.",
+        technologies: ["Wix", "SEO", "Content Management"],
+        overview:
+            "Designed and launched the Kipepeo Digital website and continue to provide maintenance, SEO optimization, and social media management.",
+        challenge:
+            "The agency needed a strong digital presence to showcase services, attract clients, and improve search visibility.",
+        solution:
+            "Built the website using Wix, optimized on-page SEO, and provided ongoing site maintenance and social media management support.",
+        features: [
+            "Service showcase pages",
+            "SEO optimization",
+            "Ongoing site maintenance",
+            "Social media management support",
+            "Responsive layout",
+            "Chatbot integration"
+        ],
+        images: [
+            "/assets/kipepeo.png",
+            "/assets/kipepeo-1.png",
+            "/assets/kipepeo-about.png",
+            "/assets/kipepeo-about-1.png",
+            "/assets/kipepeo-seo.png",
+        ],
+        testimonial: {
+            text:
+                "Our online visibility and branding improved significantly after the website launch and SEO updates.",
+            author: "Ben",
+            role: "Kipepeo Digital"
+        },
+        liveUrl: "https://www.kipepeodigital.co.ke"
     }
 ];
