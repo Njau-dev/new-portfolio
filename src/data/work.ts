@@ -223,7 +223,7 @@ export const clientProjects: ClientProject[] = [
             "Designed a multi-page static website with clean navigation, responsive layouts, and structured service sections using HTML, CSS, and JavaScript.",
         features: [
             "Multi-page informational layout",
-            "Service and product sections",
+            "Service and Blog sections",
             "Responsive design",
             "Clear navigation structure"
         ],

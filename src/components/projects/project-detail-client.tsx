@@ -193,7 +193,7 @@ const ProjectDetailClient = ({ project }: Props) => {
                             </h3>
                             <ul className="space-y-3 mb-8">
                                 {project.features.map((feature, index) => (
-                                    <li key={index} className="flex items-start gap-3 text-gray">
+                                    <li key={index} className="flex items-end gap-3 text-gray">
                                         <span className="text-primary mt-1">▹</span>
                                         <span className="leading-relaxed">{feature}</span>
                                     </li>
