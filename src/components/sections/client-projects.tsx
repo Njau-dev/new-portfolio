@@ -9,8 +9,8 @@ const ClientProjects = () => {
 
             <div className="mt-8">
                 <p className="text-gray mb-8 max-w-3xl leading-relaxed">
-                    I've had the privilege of working with amazing clients to bring their
-                    visions to life. Here are some of the projects I'm most proud of,
+                    I&apos;ve had the privilege of working with amazing clients to bring their
+                    visions to life. Here are some of the projects I&apos;m most proud of,
                     showcasing diverse solutions across different industries.
                 </p>
 

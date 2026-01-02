@@ -79,7 +79,7 @@ const ProjectProcess = () => {
                             Client-Centered Approach
                         </p>
                         <p className="text-gray">
-                            Your satisfaction is paramount. I listen carefully, communicate transparently, and ensure you're
+                            Your satisfaction is paramount. I listen carefully, communicate transparently, and ensure you&apos;re
                             delighted with every deliverable before we call it complete.
                         </p>
                     </div>

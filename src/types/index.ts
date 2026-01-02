@@ -37,7 +37,7 @@ import { LucideIcon } from 'lucide-react';
 export interface IconItem {
     href: string;
     label: string;
-    Icon: LucideIcon;
+    Icon: LucideIcon | React.ComponentType<{ size?: number; className?: string }>;
 }
 
 export interface SocialIconsProps {

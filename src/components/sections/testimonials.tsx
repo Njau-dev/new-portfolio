@@ -15,7 +15,7 @@ const Testimonials = () => {
                             className="border border-gray/70 bg-background p-6"
                         >
                             <div className="mb-4">
-                                <span className="text-primary text-4xl">"</span>
+                                <span className="text-primary text-4xl">&quot;</span>
                             </div>
                             <p className="text-gray italic mb-6 leading-relaxed">
                                 {project.testimonial?.text}

@@ -13,13 +13,13 @@ const ContactSection = ({ header }: SectionProps) => {
                     {/* Contact description */}
                     <div className="text-gray mb-12">
                         <p className="leading-relaxed">
-                            I'm actively seeking backend/full-stack opportunities and freelance
+                            I&apos;m actively seeking backend/full-stack opportunities and freelance
                         </p>
                         <p className="leading-relaxed">
                             collaborations. If you have a project requiring expertise in Laravel,
                         </p>
                         <p className="leading-relaxed">
-                            React, or Python systems, let's connect.
+                            React, or Python systems, let&apos;s connect.
                         </p>
 
 

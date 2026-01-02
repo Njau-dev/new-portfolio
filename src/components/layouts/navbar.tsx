@@ -4,11 +4,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import HeaderLink from "../ui/header-link";
 import MobileNavbar from "./mobile-navbar";
+import Image from "next/image";
 
 function Logo() {
     return (
         <Link href="/" className="flex gap-4 items-center">
-            <img src="logo-pattern.svg" alt="logo" className="h-6 w-auto" />
+            <Image src="logo-pattern.svg" alt="logo" className="h-6 w-auto" />
             <span className="font-bold text-white">Njau</span>
         </Link>
     );

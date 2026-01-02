@@ -3,11 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-
-interface ImageGalleryProps {
-    images: string[];
-    altPrefix?: string;
-}
+import { ImageGalleryProps } from '@/types';
 
 const ImageGallery = ({ images, altPrefix = 'Image' }: ImageGalleryProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);

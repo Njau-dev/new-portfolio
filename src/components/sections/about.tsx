@@ -12,12 +12,12 @@ const AboutSection = ({ header }: SectionProps) => {
                 {/* Left side - Content */}
                 <div className="lg:w-1/2">
                     <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6">
-                        Hello, i'm <span className="text-primary">Jeff Njau</span>!
+                        Hello, I&apos;m <span className="text-primary">Jeff Njau</span>!
                     </h1>
 
                     <div className="space-y-4 text-gray">
                         <p className="leading-relaxed">
-                            I'm a full-stack developer with a background in automotive engineering and sales, passionate about building technology solutions that solve real problems.
+                            I&apos;m a full-stack developer with a background in automotive engineering and sales, passionate about building technology solutions that solve real problems.
                         </p>
 
                         <p className="leading-relaxed">
@@ -25,7 +25,7 @@ const AboutSection = ({ header }: SectionProps) => {
                         </p>
 
                         <p className="leading-relaxed">
-                            Over the years, I've led projects from conception to production, mentoring teams, and collaborating with clients to turn ideas into working products. I'm eager to continue growing while building innovative, high-quality software.
+                            Over the years, I&apos;ve led projects from conception to production, mentoring teams, and collaborating with clients to turn ideas into working products. I&apos;m eager to continue growing while building innovative, high-quality software.
                         </p>
                     </div>
 

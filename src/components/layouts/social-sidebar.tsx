@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Linkedin, MessageCircle } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { FaReddit, FaWhatsapp } from "react-icons/fa";
 
 export default function SocialSidebar() {

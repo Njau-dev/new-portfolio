@@ -1,7 +1,7 @@
 "use client";
 
 import { IconItem, SocialIconsProps } from "@/types";
-import { Github, Twitter, Linkedin, Slack } from "lucide-react";
+import { Github, Twitter, Linkedin } from "lucide-react";
 import { FaDiscord, FaReddit } from "react-icons/fa";
 
 const defaultItems: IconItem[] = [
