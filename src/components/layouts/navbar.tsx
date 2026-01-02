@@ -6,10 +6,18 @@ import HeaderLink from "../ui/header-link";
 import MobileNavbar from "./mobile-navbar";
 import Image from "next/image";
 
+const NAV_ITEMS = [
+    { label: "home", href: "/" },
+    { label: "work", href: "/work" },
+    { label: "projects", href: "/projects" },
+    { label: "about-me", href: "/about" },
+    { label: "contacts", href: "/contacts" },
+];
+
 function Logo() {
     return (
         <Link href="/" className="flex gap-4 items-center">
-            <Image src="logo-pattern.svg" alt="logo" className="h-6 w-auto" />
+            <Image src="/logo-pattern.svg" alt="logo" width={24} height={24} className="h-6 w-auto" />
             <span className="font-bold text-white">Njau</span>
         </Link>
     );
@@ -18,20 +26,13 @@ function Logo() {
 export default function Navbar() {
     const [activeSection, setActiveSection] = useState("");
 
-    const navItems = [
-        { label: "home", href: "/" },
-        { label: "work", href: "/work" },
-        { label: "projects", href: "/projects" },
-        { label: "about-me", href: "/about" },
-        { label: "contacts", href: "/contacts" },
-    ];
-
     useEffect(() => {
         // Check the current URL and set the active section accordingly
         const currentPath = window.location.pathname;
-        const activeItem = navItems.find((item) => item.href === currentPath);
+        const activeItem = NAV_ITEMS.find((item) => item.href === currentPath);
         if (activeItem) {
-            setActiveSection(activeItem.label);
+            const t = window.setTimeout(() => setActiveSection(activeItem.label), 0);
+            return () => window.clearTimeout(t);
         }
     }, []);
 
@@ -51,7 +52,7 @@ export default function Navbar() {
 
                 {/* Desktop Navigation Links - Hidden on mobile */}
                 <div className="hidden md:flex space-x-8 items-center">
-                    {navItems.map((item) => (
+                    {NAV_ITEMS.map((item) => (
                         <HeaderLink
                             key={item.label}
                             label={item.label}
@@ -64,7 +65,7 @@ export default function Navbar() {
 
                 {/* Mobile Navigation - Visible only on mobile */}
                 <MobileNavbar
-                    navItems={navItems}
+                    navItems={NAV_ITEMS}
                     activeSection={activeSection}
                     onItemClick={handleItemClick}
                 />

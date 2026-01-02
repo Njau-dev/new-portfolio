@@ -19,30 +19,30 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, className = '', he
         if (!el || typeof window === 'undefined') return;
 
         let observer: IntersectionObserver | null = null;
+        let timer: number | null = null;
+
         const onIntersect: IntersectionObserverCallback = (entries) => {
             const e = entries[0];
-            if (e.isIntersecting) {
-                setMounted(true);
+            if (!e.isIntersecting) return;
 
-                if (hero) {
-                    const total = letters.length * letterDelay + letterDuration;
-                    // small buffer then start line animation
-                    const timer = window.setTimeout(() => setLineActive(true), total + 80);
-                    // clear timer if observer cleans up early
-                    (observer as IntersectionObserver).disconnect();
-                    return () => window.clearTimeout(timer);
-                }
+            setMounted(true);
 
-                // disconnect after first trigger
-                (observer as IntersectionObserver).disconnect();
+            if (hero) {
+                const total = letters.length * letterDelay + letterDuration;
+            // small buffer then start line animation
+                timer = window.setTimeout(() => setLineActive(true), total + 80);
             }
+
+            // disconnect after first trigger
+            if (observer) observer.disconnect();
         };
 
         observer = new IntersectionObserver(onIntersect, { threshold: 0.2 });
         observer.observe(el);
 
         return () => {
-            observer && observer.disconnect();
+            if (observer) observer.disconnect();
+            if (timer) window.clearTimeout(timer);
         };
     }, [letters.length, hero]);
 

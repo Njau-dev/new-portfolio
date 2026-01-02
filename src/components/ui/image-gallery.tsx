@@ -37,7 +37,7 @@ const ImageGallery = ({ images, altPrefix = 'Image' }: ImageGalleryProps) => {
         const mq = window.matchMedia('(min-width: 768px)');
         const update = () => {
             const newItems = mq.matches ? 2 : 1;
-            setItemsPerPage(prev => {
+            setItemsPerPage(() => {
                 setCurrentIndex(ci => Math.min(ci, Math.max(0, images.length - newItems)));
                 return newItems;
             });

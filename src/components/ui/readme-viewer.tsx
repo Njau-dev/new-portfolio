@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { X, ExternalLink, Loader2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { ReadmeViewerProps } from '@/types/project';
@@ -10,56 +10,7 @@ const ReadmeViewer = ({ githubUrl, readmeContent, projectTitle, onClose }: Readm
     const [loading, setLoading] = useState(!readmeContent);
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        if (readmeContent) {
-            setContent(readmeContent);
-            setLoading(false);
-            return;
-        }
-
-        if (githubUrl) {
-            fetchReadme();
-        }
-    }, [githubUrl, readmeContent]);
-
-    const fetchReadme = async () => {
-        if (!githubUrl) return;
-
-        try {
-            setLoading(true);
-            setError(null);
-
-            // Extract owner and repo from GitHub URL
-            const match = githubUrl.match(/github\.com\/([^\/]+)\/([^\/]+)/);
-            if (!match) {
-                throw new Error('Invalid GitHub URL');
-            }
-
-            const [, owner, repo] = match;
-            const apiUrl = `https://api.github.com/repos/${owner}/${repo}/readme`;
-
-            const response = await fetch(apiUrl, {
-                headers: {
-                    'Accept': 'application/vnd.github.v3.raw',
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to fetch README');
-            }
-
-            const text = await response.text();
-            setContent(text);
-        } catch (err) {
-            setError(err instanceof Error ? err.message : 'Failed to load documentation');
-            // Fallback content
-            setContent(generateFallbackContent());
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const generateFallbackContent = () => {
+    const generateFallbackContent = useCallback(() => {
         return `# ${projectTitle} Documentation
 
 ## Overview
@@ -83,7 +34,61 @@ Refer to the project repository for detailed usage instructions.
 ## Support
 For issues and questions, please visit the GitHub repository.
 `;
-    };
+    }, [projectTitle, githubUrl]);
+
+    useEffect(() => {
+        if (readmeContent) {
+            setContent(readmeContent);
+            setLoading(false);
+            return;
+        }
+
+        if (!githubUrl) return;
+
+        let cancelled = false;
+
+        (async () => {
+            try {
+                setLoading(true);
+                setError(null);
+
+                // Extract owner and repo from GitHub URL
+                const match = githubUrl.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+                if (!match) {
+                    throw new Error('Invalid GitHub URL');
+                }
+
+                const [, owner, repo] = match;
+                const apiUrl = `https://api.github.com/repos/${owner}/${repo}/readme`;
+
+                const response = await fetch(apiUrl, {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3.raw',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch README');
+                }
+
+                const text = await response.text();
+                if (!cancelled) setContent(text);
+            } catch (err) {
+                if (!cancelled) {
+                    setError(err instanceof Error ? err.message : 'Failed to load documentation');
+                    // Fallback content
+                    setContent(generateFallbackContent());
+                }
+            } finally {
+                if (!cancelled) setLoading(false);
+            }
+        })();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [githubUrl, readmeContent, generateFallbackContent]);
+
 
     return (
         <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-4">
@@ -161,7 +166,7 @@ For issues and questions, please visit the GitHub repository.
                                             <span>{children}</span>
                                         </li>
                                     ),
-                                    code: ({ inline, children }: any) =>
+                                            code: ({ inline, children }: { inline?: boolean; children?: React.ReactNode }) =>
                                         inline ? (
                                             <code className="bg-[#1e1e1e] text-primary px-2 py-1 rounded text-sm">
                                                 {children}

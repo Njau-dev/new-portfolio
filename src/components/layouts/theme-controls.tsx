@@ -24,22 +24,6 @@ export default function ThemeControls({ compact = false }: { compact?: boolean }
     const [theme, setTheme] = useState<Theme | null>(null);
     const [accent, setAccent] = useState<Accent>("purple");
 
-    useEffect(() => {
-        // initial load: read preference or system
-        try {
-            const savedTheme = window.localStorage.getItem(THEME_KEY) as Theme | null;
-            const savedAccent = (window.localStorage.getItem(ACCENT_KEY) as Accent) || "purple";
-            const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-            const initialTheme: Theme = savedTheme || (prefersDark ? "dark" : "light");
-            setTheme(initialTheme);
-            setAccent(savedAccent);
-            applyTheme(initialTheme, savedAccent);
-        } catch (e) {
-            // ignore
-        }
-    }, []);
-
     function applyTheme(t: Theme, a: Accent) {
         const vars = THEME_VARS[t];
         document.documentElement.style.setProperty("--background", vars.background);
@@ -48,12 +32,32 @@ export default function ThemeControls({ compact = false }: { compact?: boolean }
         document.documentElement.style.setProperty("--primary", ACCENTS[a]);
     }
 
-    function toggleTheme() {
-        const next: Theme = theme === "dark" ? "light" : "dark";
-        setTheme(next);
-        window.localStorage.setItem(THEME_KEY, next);
-        applyTheme(next, accent);
-    }
+    useEffect(() => {
+        // initial load: read preference or system
+        try {
+            const savedTheme = window.localStorage.getItem(THEME_KEY) as Theme | null;
+            const savedAccent = (window.localStorage.getItem(ACCENT_KEY) as Accent) || "purple";
+            const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            const initialTheme: Theme = savedTheme || (prefersDark ? "dark" : "light");
+            const t = window.setTimeout(() => {
+                setTheme(initialTheme);
+                setAccent(savedAccent);
+                applyTheme(initialTheme, savedAccent);
+            }, 0);
+            return () => window.clearTimeout(t);
+        } catch (e) {
+            // log and fail silently
+            console.error("Failed to apply theme:", e);
+        }
+    }, []);
+
+    // function toggleTheme() {
+    //     const next: Theme = theme === "dark" ? "light" : "dark";
+    //     setTheme(next);
+    //     window.localStorage.setItem(THEME_KEY, next);
+    //     applyTheme(next, accent);
+    // }
 
     function pickAccent(a: Accent) {
         setAccent(a);

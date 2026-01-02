@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import HeaderLink from "../ui/header-link";
 import Link from "next/link";
 import { XIcon } from "lucide-react";
+import Image from "next/image";
 import SocialIcons from "../ui/social-icons";
 import { MobileNavbarProps } from "@/types";
 import ThemeControls from "./theme-controls";
@@ -49,7 +50,8 @@ export default function MobileNavbar({
         const id = "mobile-menu-portal";
         const el = document.getElementById(id);
         if (el) {
-            setPortalEl(el);
+            const t = window.setTimeout(() => setPortalEl(el), 0);
+            return () => window.clearTimeout(t);
         }
     }, []);
 
@@ -93,7 +95,7 @@ export default function MobileNavbar({
                 {/* Close button and header */}
                 <div className="flex justify-between items-center p-6">
                     <Link href="/" onClick={() => handleItemClick("home")} className="flex gap-4 items-center">
-                        <img src="logo-pattern.svg" alt="logo" className="h-6 w-auto" />
+                        <Image src="/logo-pattern.svg" alt="logo" width={24} height={24} className="h-6 w-auto" />
                         <span className="font-bold text-white">Njau</span>
                     </Link>
                     <button
