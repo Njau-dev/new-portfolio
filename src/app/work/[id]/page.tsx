@@ -6,6 +6,7 @@ import { ArrowLeft, ExternalLink, Calendar, MapPin, Users } from 'lucide-react';
 import { clientProjects, workExperiences } from '@/data/work';
 import type { WorkExperience, ClientProject, WorkDetailPageProps } from '@/types';
 import AnimatedCounter from '@/components/ui/animated-counter';
+import ImageGallery from '@/components/ui/image-gallery';
 
 // Generate static params for all work experiences and client projects
 export async function generateStaticParams() {
@@ -37,8 +38,8 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
             {/* Back Button */}
             <div className="w-full max-w-7xl mx-auto px-6 pt-8">
                 <Link href="/work">
-                    <button className="flex items-center gap-2 text-gray hover:text-primary/70 transition-colors border border-gray/50 px-4 py-2 cursor-pointer ">
-                        <ArrowLeft size={20} />
+                    <button className="flex items-center gap-2 text-gray hover:text-white transition-colors border border-gray/50 px-4 py-2 hover:bg-primary/10 hover:border-primary cursor-pointer">
+                        <ArrowLeft size={20} className='text-primary' />
                         <span>Back to Work</span>
                     </button>
                 </Link>
@@ -152,20 +153,10 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
 
             {/* Images Gallery */}
             {experience.images && experience.images.length > 0 && (
-                <section className="w-full max-w-7xl mx-auto px-6 py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {experience.images.map((image, index) => (
-                            <div key={index} className="relative h-[300px] md:h-[400px] border border-gray/70 overflow-hidden">
-                                <Image
-                                    src={image}
-                                    alt={`Project screenshot ${index + 1}`}
-                                    fill
-                                    className="object-cover hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
-                        ))}
-                    </div>
-                </section>
+                <ImageGallery
+                    images={experience.images}
+                    altPrefix={isClientProject(experience) ? experience.projectName : experience.position}
+                />
             )}
 
             {/* Overview */}

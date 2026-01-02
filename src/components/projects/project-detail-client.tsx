@@ -9,6 +9,7 @@ import CLIPlayground from '@/components/ui/cli-playground';
 import ReadmeViewer from '@/components/ui/readme-viewer';
 import type { Project } from '@/types/project';
 import { getCategoryIcon, getCategoryLabel } from '@/utils/project-icon';
+import ImageGallery from '../ui/image-gallery';
 
 interface Props {
     project: Project;
@@ -33,8 +34,8 @@ const ProjectDetailClient = ({ project }: Props) => {
                 {/* Back Button */}
                 <div className="w-full max-w-7xl mx-auto px-6 pt-8">
                     <Link href="/projects">
-                        <button className="flex items-center gap-2 text-gray hover:text-primary transition-colors border border-gray/50 px-4 py-2">
-                            <ArrowLeft size={20} />
+                        <button className="flex items-center gap-2 text-gray hover:text-white transition-colors border border-gray/50 px-4 py-2 hover:bg-primary/10 hover:border-primary cursor-pointer">
+                            <ArrowLeft size={20} className='text-primary' />
                             <span>Back to Projects</span>
                         </button>
                     </Link>
@@ -158,20 +159,10 @@ const ProjectDetailClient = ({ project }: Props) => {
 
                 {/* Screenshots Gallery */}
                 {project.screenshots && project.screenshots.length > 0 && (
-                    <section className="w-full max-w-7xl mx-auto px-6 py-12">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {project.screenshots.map((screenshot, index) => (
-                                <div key={index} className="relative h-[300px] md:h-[400px] border border-gray/70 overflow-hidden">
-                                    <Image
-                                        src={screenshot}
-                                        alt={`${project.title} screenshot ${index + 1}`}
-                                        fill
-                                        className="object-cover hover:scale-105 transition-transform duration-500"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+                    <ImageGallery
+                        images={project.screenshots}
+                        altPrefix={`${project.title} screenshot`}
+                    />
                 )}
 
                 {/* Overview Section */}

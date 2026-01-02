@@ -123,3 +123,8 @@ export interface ProjectDetailPageProps {
         id: string;
     }>;
 }
+
+export interface ImageGalleryProps {
+    images: string[];
+    altPrefix?: string;
+}
