@@ -281,7 +281,7 @@ const WorkDetailPage = async ({ params }: WorkDetailPageProps) => {
                 <section className="w-full max-w-7xl mx-auto px-6 py-12">
                     <div className="border border-primary/50 bg-background p-8 md:p-12 relative">
                         <div className="mb-6">
-                            <span className="text-primary text-6xl">"</span>
+                            <span className="text-primary text-6xl">&quot;</span>
                         </div>
                         <p className="text-gray text-lg md:text-xl italic mb-8 leading-relaxed max-w-4xl">
                             {experience.testimonial.text}

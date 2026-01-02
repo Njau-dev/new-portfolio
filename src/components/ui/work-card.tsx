@@ -2,8 +2,7 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { WorkCardProps } from '@/types';
 
-const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
-    const CardContent = () => (
+const CardContent: React.FC<{ work: WorkCardProps['work']; showLink?: boolean }> = ({ work, showLink }) => (
         <>
             {/* Header */}
             <div className="mb-4">
@@ -51,11 +50,12 @@ const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
         </>
     );
 
+const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
     if (showLink) {
         return (
             <Link href={`/work/${work.id}`}>
                 <div className="border border-gray/70 bg-background p-6 hover:border-primary transition-all duration-300 my-4 group cursor-pointer">
-                    <CardContent />
+                    <CardContent work={work} showLink={showLink} />
                 </div>
             </Link>
         );
@@ -63,7 +63,7 @@ const WorkCard: React.FC<WorkCardProps> = ({ work, showLink }) => {
 
     return (
         <div className="border border-gray/70 bg-background p-6 hover:border-primary transition-colors duration-300 my-4 ">
-            <CardContent />
+            <CardContent work={work} />
         </div>
     );
 };

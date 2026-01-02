@@ -32,12 +32,12 @@ export interface PageHeaderProps {
     title?: string;
     description?: string;
 }
-
+import { LucideIcon } from 'lucide-react';
 
 export interface IconItem {
     href: string;
     label: string;
-    Icon: any;
+    Icon: LucideIcon;
 }
 
 export interface SocialIconsProps {

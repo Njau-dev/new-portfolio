@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import SocialIcons from "../ui/social-icons";
 
 export default function Footer() {
@@ -13,10 +14,12 @@ export default function Footer() {
                         <div className="flex flex-col items-center md:items-start gap-2 md:gap-4">
                             <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-2 text-white">
                                 <div className="flex items-center">
-                                    <img
-                                        src="logo-pattern.svg"
+                                    <Image
+                                        src="/logo-pattern.svg"
                                         alt="Logo"
-                                        className="h-5 w-auto mr-2"
+                                        width={20}
+                                        height={20}
+                                        className="mr-2"
                                     />
                                     <span className="text-lg sm:text-xl font-bold">Njau</span>
                                 </div>

@@ -37,7 +37,6 @@ export default function MobileNavbar({
             el.id = id;
             document.body.appendChild(el);
         }
-        setPortalEl(el);
 
         return () => {
             // don't remove a portal created elsewhere; remove only if we appended it
@@ -45,17 +44,30 @@ export default function MobileNavbar({
         };
     }, []);
 
+    // Set portal element in effect callback to avoid cascading renders
+    useEffect(() => {
+        const id = "mobile-menu-portal";
+        const el = document.getElementById(id);
+        if (el) {
+            setPortalEl(el);
+        }
+    }, []);
+
     // manage rendered/visible states for smooth enter/exit animations
     useEffect(() => {
         if (isOpen) {
-            setRendered(true);
             // next tick, show
-            const t = window.setTimeout(() => setVisible(true), 20);
+            const t = window.setTimeout(() => {
+                setRendered(true);
+                window.setTimeout(() => setVisible(true), 0);
+            }, 0);
             return () => window.clearTimeout(t);
         } else {
             // hide first, then unmount after animation
-            setVisible(false);
-            const t = window.setTimeout(() => setRendered(false), 320);
+            const t = window.setTimeout(() => {
+                setVisible(false);
+                window.setTimeout(() => setRendered(false), 320);
+            }, 0);
             return () => window.clearTimeout(t);
         }
     }, [isOpen]);
