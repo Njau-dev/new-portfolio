@@ -307,7 +307,7 @@ export const projects: Project[] = [
         id: "local-loop",
         title: "Local Loop",
         description: "Volunteer management mobile application",
-        imageUrl: "/assets/about-image.png",
+        imageUrl: "/assets/ll-volunteer-home.png",
         techStack: ["Flutter", "Firebase"],
         category: "mobile",
         platform: "Cross-platform",
@@ -330,7 +330,16 @@ export const projects: Project[] = [
         company: "Personal Project",
         duration: "3 months",
         role: "Mobile Developer",
-        screenshots: ["/assets/about-image.png"]
+        screenshots: [
+            "/assets/ll-volunteer-home.png",
+            "/assets/ll-login.png",
+            "/assets/ll-volunteer-profile.png",
+            "/assets/ll-volunteer-2.png",
+            "/assets/ll-ngo-home.png",
+            "/assets/ll-events.png",
+            "/assets/ll-volunteer-1.png",
+            "/assets/ll-create.png"
+        ]
     },
 
     // ======================
