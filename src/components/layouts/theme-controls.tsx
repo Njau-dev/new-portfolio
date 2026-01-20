@@ -6,73 +6,76 @@ type Theme = "dark" | "light";
 type Accent = "purple" | "blue" | "green" | "orange";
 
 const ACCENTS: Record<Accent, string> = {
-    purple: "#C778DD",
-    blue: "#6EB9FF",
-    green: "#7EE787",
-    orange: "#FFB86B",
+  purple: "#C778DD",
+  blue: "#6EB9FF",
+  green: "#7EE787",
+  orange: "#FFB86B"
 };
 
 const THEME_VARS: Record<Theme, { background: string; gray: string; white: string }> = {
-    dark: { background: "#282C33", gray: "#ABB2BF", white: "#FFFFFF" },
-    light: { background: "#F3F4F6", gray: "#374151", white: "#0F172A" },
+  dark: { background: "#282C33", gray: "#ABB2BF", white: "#FFFFFF" },
+  light: { background: "#F3F4F6", gray: "#374151", white: "#0F172A" }
 };
 
 const THEME_KEY = "preferred-theme";
 const ACCENT_KEY = "preferred-accent";
 
 export default function ThemeControls({ compact = false }: { compact?: boolean }) {
-    const [theme, setTheme] = useState<Theme | null>(null);
-    const [accent, setAccent] = useState<Accent>("purple");
+  const [theme, setTheme] = useState<Theme | null>(null);
+  const [accent, setAccent] = useState<Accent>("purple");
 
-    function applyTheme(t: Theme, a: Accent) {
-        const vars = THEME_VARS[t];
-        document.documentElement.style.setProperty("--background", vars.background);
-        document.documentElement.style.setProperty("--gray", vars.gray);
-        document.documentElement.style.setProperty("--white", vars.white);
-        document.documentElement.style.setProperty("--primary", ACCENTS[a]);
+  function applyTheme(t: Theme, a: Accent) {
+    const vars = THEME_VARS[t];
+    document.documentElement.style.setProperty("--background", vars.background);
+    document.documentElement.style.setProperty("--gray", vars.gray);
+    document.documentElement.style.setProperty("--white", vars.white);
+    document.documentElement.style.setProperty("--primary", ACCENTS[a]);
+  }
+
+  useEffect(() => {
+    // initial load: read preference or system
+    try {
+      const savedTheme = window.localStorage.getItem(THEME_KEY) as Theme | null;
+      const savedAccent = (window.localStorage.getItem(ACCENT_KEY) as Accent) || "purple";
+      const prefersDark =
+        window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      const initialTheme: Theme = savedTheme || (prefersDark ? "dark" : "light");
+      const t = window.setTimeout(() => {
+        setTheme(initialTheme);
+        setAccent(savedAccent);
+        applyTheme(initialTheme, savedAccent);
+      }, 0);
+      return () => window.clearTimeout(t);
+    } catch (e) {
+      // log and fail silently
+      console.error("Failed to apply theme:", e);
     }
+  }, []);
 
-    useEffect(() => {
-        // initial load: read preference or system
-        try {
-            const savedTheme = window.localStorage.getItem(THEME_KEY) as Theme | null;
-            const savedAccent = (window.localStorage.getItem(ACCENT_KEY) as Accent) || "purple";
-            const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  // function toggleTheme() {
+  //     const next: Theme = theme === "dark" ? "light" : "dark";
+  //     setTheme(next);
+  //     window.localStorage.setItem(THEME_KEY, next);
+  //     applyTheme(next, accent);
+  // }
 
-            const initialTheme: Theme = savedTheme || (prefersDark ? "dark" : "light");
-            const t = window.setTimeout(() => {
-                setTheme(initialTheme);
-                setAccent(savedAccent);
-                applyTheme(initialTheme, savedAccent);
-            }, 0);
-            return () => window.clearTimeout(t);
-        } catch (e) {
-            // log and fail silently
-            console.error("Failed to apply theme:", e);
-        }
-    }, []);
+  function pickAccent(a: Accent) {
+    setAccent(a);
+    window.localStorage.setItem(ACCENT_KEY, a);
+    if (theme) applyTheme(theme, a);
+  }
 
-    // function toggleTheme() {
-    //     const next: Theme = theme === "dark" ? "light" : "dark";
-    //     setTheme(next);
-    //     window.localStorage.setItem(THEME_KEY, next);
-    //     applyTheme(next, accent);
-    // }
+  if (theme === null) return null;
 
-    function pickAccent(a: Accent) {
-        setAccent(a);
-        window.localStorage.setItem(ACCENT_KEY, a);
-        if (theme) applyTheme(theme, a);
-    }
+  const wrapperClass = compact
+    ? "flex items-center gap-3"
+    : "flex  flex-col items-center gap-4 border border-gray/30 p-3 rounded-md";
 
-    if (theme === null) return null;
-
-    const wrapperClass = compact ? "flex items-center gap-3" : "flex  flex-col items-center gap-4 border border-gray/30 p-3 rounded-md";
-
-    return (
-        <div className={wrapperClass}>
-            {/* Theme toggle */}
-            {/* <button
+  return (
+    <div className={wrapperClass}>
+      {/* Theme toggle */}
+      {/* <button
                 aria-label="Toggle theme"
                 onClick={toggleTheme}
                 className={`p-2 rounded-md border border-gray/30 hover:border-primary transition-colors bg-transparent ${compact ? 'text-sm' : ''}`}
@@ -91,28 +94,28 @@ export default function ThemeControls({ compact = false }: { compact?: boolean }
                 )}
             </button> */}
 
-            {/* Accent pickers */}
-            <div className={`flex items-center ${compact ? 'gap-2' : 'flex-col gap-3'}`}>
-                {(Object.keys(ACCENTS) as Accent[]).map((a) => (
-                    <div key={a} className="relative group">
-                        <button
-                            aria-label={`Select ${a} accent`}
-                            title={a}
-                            onClick={() => pickAccent(a)}
-                            className={`w-6 h-6 rounded-full border-2 ${accent === a ? 'border-white' : 'border-transparent'} shadow-sm`}
-                            style={{ background: ACCENTS[a] }}
-                        />
+      {/* Accent pickers */}
+      <div className={`flex items-center ${compact ? "gap-2" : "flex-col gap-3"}`}>
+        {(Object.keys(ACCENTS) as Accent[]).map((a) => (
+          <div key={a} className="group relative">
+            <button
+              aria-label={`Select ${a} accent`}
+              title={a}
+              onClick={() => pickAccent(a)}
+              className={`h-6 w-6 rounded-full border-2 ${accent === a ? "border-white" : "border-transparent"} shadow-sm`}
+              style={{ background: ACCENTS[a] }}
+            />
 
-                        {/* tooltip: appears on hover */}
-                        <span
-                            aria-hidden
-                            className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-background text-white text-xs px-2 py-1 rounded-md shadow-md opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200"
-                        >
-                            {a.charAt(0).toUpperCase() + a.slice(1)}
-                        </span>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+            {/* tooltip: appears on hover */}
+            <span
+              aria-hidden
+              className="bg-background pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 translate-y-1 rounded-md px-2 py-1 text-xs whitespace-nowrap text-white opacity-0 shadow-md transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100"
+            >
+              {a.charAt(0).toUpperCase() + a.slice(1)}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

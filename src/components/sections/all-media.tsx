@@ -1,127 +1,121 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import SectionHeader from '../ui/section-header';
-import { Github, Twitter, Linkedin, Slack, Mail } from 'lucide-react';
-import { BsWhatsapp } from 'react-icons/bs';
-import { FaDiscord, FaReddit } from 'react-icons/fa';
+import Image from "next/image";
+import Link from "next/link";
+import SectionHeader from "../ui/section-header";
+import { Github, Twitter, Linkedin, Slack, Mail } from "lucide-react";
+import { BsWhatsapp } from "react-icons/bs";
+import { FaDiscord, FaReddit } from "react-icons/fa";
 
 interface MediaItem {
-    name: string;
-    username: string;
-    href: string;
-    Icon: typeof Github | typeof Twitter | typeof Linkedin | typeof Slack | typeof BsWhatsapp;
+  name: string;
+  username: string;
+  href: string;
+  Icon: typeof Github | typeof Twitter | typeof Linkedin | typeof Slack | typeof BsWhatsapp;
 }
 
 const mediaItems: MediaItem[] = [
-    {
-        name: 'Whatsapp',
-        username: 'Whatsapp',
-        href: 'https://wa.me/254705984048',
-        Icon: BsWhatsapp
-    },
-    {
-        name: 'Email',
-        username: 'Email',
-        href: 'mailto:jeffnjau01@gmail.com',
-        Icon: Mail
-    },
-    {
-        name: 'Github',
-        username: 'Github',
-        href: 'https://github.com/Njau-dev',
-        Icon: Github
-    },
-    {
-        name: 'Twitter',
-        username: 'X',
-        href: 'https://x.com/dzeph01',
-        Icon: Twitter
-    },
-    {
-        name: 'Linkedin',
-        username: 'LinkedIn',
-        href: 'https://linkedin.com/in/jeff-njau',
-        Icon: Linkedin
-    },
-    {
-        name: 'Discord',
-        username: 'Discord',
-        href: 'https://discord.com/users/njau_dev',
-        Icon: FaDiscord
-    },
-    {
-        name: 'Reddit',
-        username: 'Reddit',
-        href: 'https://reddit.com/user/scented_dustbin',
-        Icon: FaReddit
-    }
-
+  {
+    name: "Whatsapp",
+    username: "Whatsapp",
+    href: "https://wa.me/254705984048",
+    Icon: BsWhatsapp
+  },
+  {
+    name: "Email",
+    username: "Email",
+    href: "mailto:jeffnjau01@gmail.com",
+    Icon: Mail
+  },
+  {
+    name: "Github",
+    username: "Github",
+    href: "https://github.com/Njau-dev",
+    Icon: Github
+  },
+  {
+    name: "Twitter",
+    username: "X",
+    href: "https://x.com/dzeph01",
+    Icon: Twitter
+  },
+  {
+    name: "Linkedin",
+    username: "LinkedIn",
+    href: "https://linkedin.com/in/jeff-njau",
+    Icon: Linkedin
+  },
+  {
+    name: "Discord",
+    username: "Discord",
+    href: "https://discord.com/users/njau_dev",
+    Icon: FaDiscord
+  },
+  {
+    name: "Reddit",
+    username: "Reddit",
+    href: "https://reddit.com/user/scented_dustbin",
+    Icon: FaReddit
+  }
 ];
 
 const AllMediaSection = () => {
-    return (
-        <section className="w-full max-w-7xl mx-auto px-6 py-12 md:py-20">
-            <SectionHeader title="all-media" />
+  return (
+    <section className="mx-auto w-full max-w-7xl px-6 py-12 md:py-20">
+      <SectionHeader title="all-media" />
 
-            <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-40 mt-8">
-                {/* Left side - Media items */}
-                <div className="w-full lg:w-3/5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {mediaItems.map((item) => (
-                            <div
-                                key={item.name}
-                                className="border border-gray/70 bg-background p-4 hover:border-primary transition-colors duration-300"
-                            >
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                        <item.Icon size={24} className="text-gray" />
-                                        <span className="text-gray">{item.username}</span>
-                                    </div>
-                                    <Link
-                                        href={item.href}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="text-gray hover:text-primary transition-colors text-sm"
-                                    >
-                                        connect
-                                    </Link>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+      <div className="relative mt-8 flex flex-col gap-8 lg:flex-row lg:gap-40">
+        {/* Left side - Media items */}
+        <div className="w-full lg:w-3/5">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {mediaItems.map((item) => (
+              <div
+                key={item.name}
+                className="border-gray/70 bg-background hover:border-primary border p-4 transition-colors duration-300"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <item.Icon size={24} className="text-gray" />
+                    <span className="text-gray">{item.username}</span>
+                  </div>
+                  <Link
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-gray hover:text-primary text-sm transition-colors"
+                  >
+                    connect
+                  </Link>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-                {/* Right side - Pattern decorations - Hidden on small/medium screens */}
-                <div className="hidden lg:block lg:w-2/5 relative">
-                    <div className="space-y-8 sticky top-8">
-                        {/* Top pattern - dots */}
-                        <div className="relative h-[120px] w-full flex justify-end">
-                            <div className="relative w-[140px] h-full">
-                                <Image
-                                    src="/dots.svg"
-                                    alt="decorative dots"
-                                    fill
-                                    className="object-contain"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Bottom pattern - logo pattern */}
-                        <div className="relative h-[140px] w-full flex justify-center">
-                            <div className="relative w-[150px] h-full opacity-30">
-                                <Image
-                                    src="/logo-pattern.svg"
-                                    alt="decorative logo pattern"
-                                    fill
-                                    className="object-contain"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        {/* Right side - Pattern decorations - Hidden on small/medium screens */}
+        <div className="relative hidden lg:block lg:w-2/5">
+          <div className="sticky top-8 space-y-8">
+            {/* Top pattern - dots */}
+            <div className="relative flex h-[120px] w-full justify-end">
+              <div className="relative h-full w-[140px]">
+                <Image src="/dots.svg" alt="decorative dots" fill className="object-contain" />
+              </div>
             </div>
-        </section>
-    );
+
+            {/* Bottom pattern - logo pattern */}
+            <div className="relative flex h-[140px] w-full justify-center">
+              <div className="relative h-full w-[150px] opacity-30">
+                <Image
+                  src="/logo-pattern.svg"
+                  alt="decorative logo pattern"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default AllMediaSection;

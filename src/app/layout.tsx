@@ -10,32 +10,30 @@ import ThemeControls from "@/components/layouts/theme-controls";
 import ScrollProgress from "@/components/layouts/scroll-progress";
 import PageTransitions from "@/components/layouts/page-transitions";
 
-
 const firaCode = Fira_Code({
   variable: "--font-fira-code",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 export const metadata: Metadata = {
   title: "My Portfolio",
-  description: "Software developer | Portfolio website of Jefferson Njau | Web designer and back-end developer",
+  description:
+    "Software developer | Portfolio website of Jefferson Njau | Web designer and back-end developer"
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${firaCode.variable} antialiased`}
-      >
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${firaCode.variable} scroll-smooth antialiased`}>
         {/* Social sidebar */}
         <SocialSidebar />
 
         {/* Desktop theme controls) */}
-        <div className="hidden xl:flex fixed bottom-28 right-6 z-50 px-2 pb-2 bg-background">
+        <div className="bg-background fixed right-6 bottom-28 z-50 hidden px-2 pb-2 xl:flex">
           <ThemeControls />
         </div>
 
@@ -52,7 +50,7 @@ export default function RootLayout({
 
           <Navbar />
 
-          <div className="relative top-20 ">
+          <div className="relative top-20">
             <PageTransitions>{children}</PageTransitions>
           </div>
 
