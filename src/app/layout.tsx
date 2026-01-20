@@ -27,9 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${firaCode.variable} antialiased`}
+        className={`${firaCode.variable} antialiased scroll-smooth`}
       >
         {/* Social sidebar */}
         <SocialSidebar />
