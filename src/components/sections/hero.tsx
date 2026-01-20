@@ -1,76 +1,83 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 import Image from "next/image";
 import Button from "../ui/button";
 import QuoteSection from "../ui/quote-section";
-import CVModal from '../ui/cv-modal';
+import CVModal from "../ui/cv-modal";
 
 export default function Hero() {
-    const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
 
-    return (
-        <>
-            <section className="min-h-screen lg:min-h-[70vh] flex items-start lg:items-center py-6 md:py-16 px-6 max-w-7xl mx-auto w-full z-0">
-                <div className="">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        {/* Text Content */}
-                        <div className="space-y-4 md:space-y-6 order-1">
-                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight">
-                                <span className="">Jeff is a <span className="text-primary">web designer</span> and </span>
-                                <span className="text-primary block">full-stack developer</span>
-                            </h1>
+  return (
+    <>
+      <section className="z-0 mx-auto flex min-h-screen w-full max-w-7xl items-start px-6 py-6 md:py-16 lg:min-h-[70vh] lg:items-center">
+        <div className="">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+            {/* Text Content */}
+            <div className="order-1 space-y-4 md:space-y-6">
+              <h1 className="text-3xl leading-tight font-medium text-white md:text-4xl lg:text-5xl">
+                <span className="">
+                  Jeff is a <span className="text-primary">web designer</span> and{" "}
+                </span>
+                <span className="text-primary block">full-stack developer</span>
+              </h1>
 
-                            <p className="text-lg md:text-xl text-gray leading-relaxed max-w-2xl">
-                                He crafts responsive, secure, scalable web applications with Laravel, React & Python that align with your business needs.
-                            </p>
+              <p className="text-gray max-w-2xl text-lg leading-relaxed md:text-xl">
+                He crafts responsive, secure, scalable web applications with Laravel, React & Python
+                that align with your business needs.
+              </p>
 
-                            <div className="flex justify-center lg:justify-start gap-4 pt-4">
-                                <Button variant="primary" href="/contacts">Get in touch</Button>
+              <div className="flex justify-center gap-4 pt-4 lg:justify-start">
+                <Button variant="primary" href="/contacts">
+                  Get in touch
+                </Button>
 
-                                <Button variant="secondary" onClick={() => setIsCVModalOpen(true)}>
-                                    View CV |&gt;
-                                </Button>
-                            </div>
-                        </div>
+                <Button variant="secondary" onClick={() => setIsCVModalOpen(true)}>
+                  View CV |&gt;
+                </Button>
+              </div>
+            </div>
 
-                        {/* Image Content */}
-                        <div className="order-2 flex justify-center lg:justify-end">
-                            <div className="relative w-full">
-                                {/* Main Image Frame */}
-                                <div className="relative w-full h-80 lg:h-[450px] xl:h-[500px] bg-background overflow-auto">
-                                    <Image
-                                        src="/assets/hero_image.png"
-                                        alt="Jeff - Web Designer and Back-end Developer"
-                                        fill
-                                        className="object-contain "
-                                        priority
-                                    />
-                                </div>
-                                <div className="flex items-center gap-3 text-gray border border-gray px-3 py-2">
-                                    <div className="relative">
-                                        <div className="w-3 h-3 bg-primary animate-ping absolute"></div>
-                                        <div className="w-3 h-3 bg-primary relative"></div>
-                                    </div>
-                                    <span className="text-sm">Currently working on <span className="text-white font-medium">Portfolio</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Bottom Section */}
-                    <div className="flex items-center mt-8 md:mt-12 lg:mt-16">
-                        <QuoteSection />
-                    </div>
+            {/* Image Content */}
+            <div className="order-2 flex justify-center lg:justify-end">
+              <div className="relative w-full">
+                {/* Main Image Frame */}
+                <div className="bg-background relative h-80 w-full overflow-auto lg:h-[450px] xl:h-[500px]">
+                  <Image
+                    src="/assets/hero_image.png"
+                    alt="Jeff - Web Designer and Back-end Developer"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
-            </section>
+                <div className="text-gray border-gray flex items-center gap-3 border px-3 py-2">
+                  <div className="relative">
+                    <div className="bg-primary absolute h-3 w-3 animate-ping"></div>
+                    <div className="bg-primary relative h-3 w-3"></div>
+                  </div>
+                  <span className="text-sm">
+                    Currently working on <span className="font-medium text-white">Portfolio</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <CVModal
-                isOpen={isCVModalOpen}
-                onClose={() => setIsCVModalOpen(false)}
-                cvUrl="/assets/resume/Jeff_Njau_CV.pdf"
-                fileName="Jeff_Njau_CV"
-            />
-        </>
-    );
+          {/* Bottom Section */}
+          <div className="mt-8 flex items-center md:mt-12 lg:mt-16">
+            <QuoteSection />
+          </div>
+        </div>
+      </section>
+
+      <CVModal
+        isOpen={isCVModalOpen}
+        onClose={() => setIsCVModalOpen(false)}
+        cvUrl="/assets/resume/Jeff_Njau_CV.pdf"
+        fileName="Jeff_Njau_CV"
+      />
+    </>
+  );
 }

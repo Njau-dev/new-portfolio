@@ -4,49 +4,51 @@ import Image from "next/image";
 import SocialIcons from "../ui/social-icons";
 
 export default function Footer() {
-    const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
-    return (
-        <footer className="w-full bg-background py-6 md:py-8 px-4 sm:px-6 border-t border-gray/20 relative top-20">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col items-center space-y-4 md:space-y-4">
-                    <div className="flex flex-col md:flex-row w-full justify-between items-center gap-6 md:gap-0">
-                        <div className="flex flex-col items-center md:items-start gap-2 md:gap-4">
-                            <div className="flex flex-col sm:flex-row items-center space-x-0 sm:space-x-2 text-white">
-                                <div className="flex items-center">
-                                    <Image
-                                        src="/logo-pattern.svg"
-                                        alt="Logo"
-                                        width={20}
-                                        height={20}
-                                        className="mr-2"
-                                    />
-                                    <span className="text-lg sm:text-xl font-bold">Njau</span>
-                                </div>
-                                <a href="mailto:jeffnjau01@gmail.com" target="_blank" className="text-xs sm:text-sm text-gray mt-1 sm:mt-0 md:pl-2 hover:underline focus:underline">
-                                    jeffnjau01@gmail.com
-                                </a>
-                            </div>
-                            <p className="text-gray text-sm sm:text-base text-center md:text-left">
-                                Full-Stack Developer
-                            </p>
-                        </div>
-
-                        <div className="flex flex-col items-center md:items-end gap-2">
-                            <span className="font-medium text-white text-base sm:text-lg">
-                                Connect with me
-                            </span>
-                            <SocialIcons />
-                        </div>
-                    </div>
-
-                    <div className="mt-2 md:mt-4 w-full">
-                        <p className="text-white/80 text-xs sm:text-sm text-center">
-                            © Copyright {currentYear}. Built with Next.js, Tailwind CSS, and ❤️.
-                        </p>
-                    </div>
+  return (
+    <footer className="bg-background border-gray/20 relative top-20 w-full border-t px-4 py-6 sm:px-6 md:py-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col items-center space-y-4 md:space-y-4">
+          <div className="flex w-full flex-col items-center justify-between gap-6 md:flex-row md:gap-0">
+            <div className="flex flex-col items-center gap-2 md:items-start md:gap-4">
+              <div className="flex flex-col items-center space-x-0 text-white sm:flex-row sm:space-x-2">
+                <div className="flex items-center">
+                  <Image
+                    src="/logo-pattern.svg"
+                    alt="Logo"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <span className="text-lg font-bold sm:text-xl">Njau</span>
                 </div>
+                <a
+                  href="mailto:jeffnjau01@gmail.com"
+                  target="_blank"
+                  className="text-gray mt-1 text-xs hover:underline focus:underline sm:mt-0 sm:text-sm md:pl-2"
+                >
+                  jeffnjau01@gmail.com
+                </a>
+              </div>
+              <p className="text-gray text-center text-sm sm:text-base md:text-left">
+                Full-Stack Developer
+              </p>
             </div>
-        </footer>
-    );
+
+            <div className="flex flex-col items-center gap-2 md:items-end">
+              <span className="text-base font-medium text-white sm:text-lg">Connect with me</span>
+              <SocialIcons />
+            </div>
+          </div>
+
+          <div className="mt-2 w-full md:mt-4">
+            <p className="text-center text-xs text-white/80 sm:text-sm">
+              © Copyright {currentYear}. Built with Next.js, Tailwind CSS, and ❤️.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }

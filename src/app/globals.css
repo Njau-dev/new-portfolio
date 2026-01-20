@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #282C33;
-    --primary: #C778DD;
-    --gray: #ABB2BF;
-    --white: #FFFFFF;
-    --font-fira-code: var(--font-fira-code);
+  --background: #282c33;
+  --primary: #c778dd;
+  --gray: #abb2bf;
+  --white: #ffffff;
+  --font-fira-code: var(--font-fira-code);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-primary: var(--primary);
-    --color-gray: var(--gray);
-    --color-white: var(--white);
+  --color-gray: var(--gray);
+  --color-white: var(--white);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -26,5 +26,5 @@
 body {
   background: var(--background);
   color: var(--gray);
-    font-family: var(--font-fira-code);
+  font-family: var(--font-fira-code);
 }
