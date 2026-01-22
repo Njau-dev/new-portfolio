@@ -418,7 +418,7 @@ export const projects: Project[] = [
         id: "safe-ctl",
         title: "Safe CTL",
         description: "A safety-first CLI tool that analyzes shell commands before you run them, helping prevent destructive mistakes.",
-        imageUrl: "assets/safe-ctl.png",
+        imageUrl: "/assets/safe-ctl.png",
         techStack: ["Python", "Poetry", "Typer", "Rich", "Questionary", "Pytest"],
         category: "cli",
         links: {
