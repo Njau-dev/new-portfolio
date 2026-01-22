@@ -137,7 +137,16 @@ export const projects: Project[] = [
         company: "Personal Project",
         duration: "1 month",
         role: "Full-Stack Developer",
-        screenshots: ["/assets/mini-shop.png"]
+        screenshots: [
+            "/assets/mini-shop.png",
+            "/assets/mini-shop-admin.png",
+            "/assets/mini-shop-2.png",
+            "/assets/mini-shop-3.png",
+            "/assets/mini-shop-4.png",
+            "/assets/mini-shop-5.png",
+            "/assets/mini-shop-6.png",
+            "/assets/mini-shop-7.png"
+        ]
     },
     {
         id: "audiopine-solutions",
@@ -405,6 +414,71 @@ export const projects: Project[] = [
             "/assets/dependency-test.png"
         ]
     },
+    {
+        id: "safe-ctl",
+        title: "Safe CTL",
+        description: "A safety-first CLI tool that analyzes shell commands before you run them, helping prevent destructive mistakes.",
+        imageUrl: "", // leave blank for now
+        techStack: ["Python", "Poetry", "Typer", "Rich", "Questionary", "Pytest"],
+        category: "cli",
+        links: {
+            github: "https://github.com/Njau-dev/safe-cli"
+        },
+        overview:
+            `SafeCTL is a developer safety tool that helps prevent accidental execution of dangerous shell commands. 
+            It provides real-time safety checks, warnings, and explanations before executing potentially harmful commands. 
+            Built with Python and Rich for beautiful terminal output, SafeCTL acts as your command-line safety net.`,
+        features: [
+            "Command safety analysis before execution",
+            "Custom rule sets for Docker, Git, Filesystem, and System commands",
+            "Interactive prompts and suggestions for safer alternatives",
+            "Beautiful terminal UI with Rich",
+            "Pattern matching for dangerous commands",
+            "Interactive warnings with explanations"
+        ],
+        challenges: `Designing an effective safety system that balances protection with usability. 
+                    The tool needed to identify dangerous patterns without generating too many false positives, 
+                    while also providing clear explanations that help users learn safer command practices.`,
+
+        solutions: `Implemented a multi-layered safety check system with pattern matching and contextual analysis. 
+                    Used Rich library for clear, color-coded warnings and explanations. Added interactive prompts with 
+                    Questionary to ensure users understand risks before proceeding. Created customizable rule sets 
+                    that users can adapt to their workflow.`,
+        installCommand: "pipx install safectl",
+        terminalUrl: "https://safectl-playground.fly.dev/",
+        cliCommands: [
+            {
+                command: 'safectl check <command>',
+                description: 'Check if a command is safe to run without executing it',
+                example: 'safectl check "rm -rf /"'
+            },
+            {
+                command: 'safectl <command>',
+                description: 'Run a command with safety checks and confirmations',
+                example: 'safectl "sudo rm important-file.txt"'
+            },
+            {
+                command: 'safectl --help',
+                description: 'Display help information and available commands',
+                example: 'safectl --help'
+            },
+            {
+                command: 'safectl --version',
+                description: 'Show the installed version of safectl',
+                example: 'safectl --version'
+            }
+        ],
+        company: "Open Source",
+        duration: "1 month",
+        role: "Creator & Maintainer",
+        screenshots: [
+            "/assets/safe-ctl.png",
+            "/assets/safe-ctl-1.png",
+            "/assets/safe-ctl-2.png",
+            "/assets/safe-ctl-3.png",
+        ]
+    },
+
 
     // ======================
     // NO CODE PROJECTS
